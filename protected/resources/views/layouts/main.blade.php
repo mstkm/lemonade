@@ -21,7 +21,10 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link href="{{ asset('dist/css/skins/_all-skins.min.css') }}" rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('bower_components/plugins/timepcker/bootstrap-timepicker.min.css')}}">
+  <!-- <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-timepicker/css/timepicker.less')}}"> -->
+
+  <link rel="stylesheet" href="{{asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+  
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,15 +54,48 @@
   </div>
 </div>
 
+<!-- <script>
+window.onload = function() {
+    if (window.moment) {  
+        // jQuery is loaded  
+        alert("Yeah!");
+    } else {
+        // jQuery is not loaded
+        alert("Doesn't Work");
+    }
+}
+</script> -->
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script> 
 
 <!-- bootstrap time picker -->
 
+
+
+<!-- <script src="{{ asset('bower_components/jquery/dist/jquery.js')}}"></script>
+<script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('/bower_components/moment/moment.js')}}"></script>
+
+<script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+
+<!-- Bootstrap 3.3.7 -->
+
+<!-- Select2 -->
+<!-- <script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js')}}"></script> -->
+<!-- InputMask -->
+<!-- <script src="{{ asset('plugins/input-mask/jquery.inputmask.js')}}"></script> -->
+<!-- <script src="{{ asset('plugins/input-mask/jquery.inputmask.extensions.js')}}"></script> -->
+<!-- bootstrap time picker -->
+<!-- <script src="{{ asset('plugins/timepicker/bootstrap-timepicker.min.js')}}"></script> -->
+<!-- SlimScroll -->
+<!-- <script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script> -->
+<!-- iCheck 1.0.1 -->
+<!-- <script src="{{ asset('plugins/iCheck/icheck.min.js')}}"></script> -->
+<!-- FastClick -->
+<!-- <script src="{{ asset('bower_components/fastclick/lib/fastclick.js')}}"></script> -->
+<!-- AdminLTE App -->
+<!-- <script src="{{ asset('dist/js/adminlte.min.js')}}"></script> -->
+<!-- AdminLTE for demo purposes -->
+<!-- <script src="{{ asset('dist/js/demo.js')}}"></script> --> 
 <script src="{{ asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
@@ -69,6 +105,13 @@
 <script src="{{ asset('plugins/input-mask/jquery.inputmask.js')}}"></script>
 <script src="{{ asset('plugins/input-mask/jquery.inputmask.date.extensions.js')}}"></script>
 <script src="{{ asset('plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
+<!-- date-range-picker -->
+<script src="{{ asset('bower_components/moment/min/moment.min.js')}}"></script>
+<script src="{{ asset('bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+<!-- bootstrap datepicker -->
+<script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+<!-- bootstrap color picker -->
+<script src="{{ asset('bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}"></script>
 <!-- bootstrap time picker -->
 <script src="{{ asset('plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
 <!-- SlimScroll -->
@@ -82,6 +125,28 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js')}}"></script>
 
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>                   
+
+     
+<script type="text/javascript">
+
+  $('.time').datetimepicker({
+
+      format: 'HH:mm'
+
+  }); 
+
+                $('#date').datepicker({
+                  autoclose: true
+                })
+
+          
+                    </script> 
+                    
 
 </body>
 </html>

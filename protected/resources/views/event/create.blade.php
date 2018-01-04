@@ -74,7 +74,7 @@
                         <label for="date" class="col-md-4 control-label">Tanggal</label>
 
                         <div class="col-md-6">
-                            <input id="date" type="date" class="form-control datepicker" name="date" value="{{ old('date') }}" required autofocus>
+                            <input id="date" type="text" class="form-control" name="date" value="{{ old('date') }}" required autofocus>
                             @if ($errors->has('date'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('date') }}</strong>
@@ -82,12 +82,13 @@
                             @endif
                         </div>
                     </div>
+                    
 
                     <div class="form-group{{ $errors->has('startevent') ? ' has-error' : '' }}">
                         <label for="startevent" class="col-md-4 control-label">Jam</label>
 
                         <div class="col-md-3">
-                            <input id="datepicker" type="time" class="form-control datetime" name="startevent" value="{{ old('startevent') }}" required autofocus>
+                            <input  type="text" class="form-control time" name="startevent" value="{{ old('startevent') }}" required autofocus>
 
                             @if ($errors->has('startevent'))
                                 <span class="help-block">
@@ -96,7 +97,7 @@
                             @endif
                         </div>
                         <div class="col-md-3">
-                            <input id="endevent" type="time" class="form-control datetime" name="endevent" value="{{ old('endevent') }}" required autofocus>
+                            <input type="text" class="form-control time" name="endevent" value="{{ old('endevent') }}" required autofocus>
 
                             @if ($errors->has('endevent'))
                                 <span class="help-block">
@@ -105,6 +106,8 @@
                             @endif
                         </div>
                     </div>
+
+             
 
                         <div class="form-group{{ $errors->has('keterangan') ? ' has-error' : '' }}">
                             <label for="keterangan" class="col-md-4 control-label">Keterangan</label>
@@ -133,15 +136,7 @@
                             </div>
                         </div>
 
-                        <script type="text/javascript">
-
-                        $('.datetime').datetimepicker({
-
-                            format: 'DD-MM-YYYY HH:mm';
-                        }); 
-
-                    </script> 
-
+                  
                         <div class="form-group">
                             <label for="admin" class="col-md-4 control-label">Kostum</label>
                             <div class="col-md-6">

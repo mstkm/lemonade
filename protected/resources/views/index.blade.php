@@ -11,6 +11,7 @@
   <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
   <link href="{{asset('css/lightbox.css')}}" rel="stylesheet">
   <link href="{{asset('css/main.css')}}" rel="stylesheet">
+  <link href="{{asset('bower_components\bootstrap-datepicker\dist\css\bootstrap-datepicker.css')}}" rel="stylesheet">
   <link id="css-preset" href="{{asset('css/presets/preset1.css')}}" rel="stylesheet">
   <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
 
@@ -21,6 +22,95 @@
   
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
   <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}">
+
+
+  <style>
+
+.vid-list-container {
+	width: 92%;
+	overflow: hidden;
+	margin-top: 20px;
+	margin-left:4%;
+	padding-bottom: 20px;
+}
+
+.vid-list {
+	width: 1344px;
+	position: relative;
+	top:0;
+	left: 0;
+}
+
+.vid-item {
+	display: block;
+	width: 148px;
+	height: 148px;
+	float: left;
+	margin: 0;
+	padding: 10px;
+}
+
+.thumb {
+	overflow:hidden;
+	height: 84px;
+}
+
+.thumb img {
+	width: 100%;
+	position: relative;
+	top: -13px;
+}
+
+.vid-item .desc {
+	color: #21A1D2;
+	font-size: 15px;
+	margin-top:5px;
+}
+
+.arrows {
+	position:relative;
+	width: 100%;
+}
+
+.arrow-left {
+	color: #fff;
+	position: absolute;
+	background: #777;
+	padding: 15px;
+	left: -25px;
+	top: -130px;
+	z-index: 99;
+	cursor: pointer;
+}
+
+.arrow-right {
+	color: #fff;
+	position: absolute;
+	background: #777;
+	padding: 15px;
+	right: -25px;
+	top: -130px;
+	z-index:100;
+	cursor: pointer;
+}
+
+@media (max-width: 624px) {
+	.arrows {
+		position:relative;
+		margin: 0 auto;
+		width:96px;
+	}
+	.arrow-left {
+		left: 0;
+		top: -20px;
+	}
+
+	.arrow-right {
+		right: 0;
+		top: -20px;
+	}
+}
+  </style>
 </head><!--/head-->
 
 <body>
@@ -39,37 +129,29 @@
         {
           echo 'active';
         }
-      ?>" style="background-image: url(images/slider/1.jpg)">
+      ?>" style="background-image: url({{asset('images/slider/'.($x+1).'.jpg')}}">
           <div class="caption">
             <h1 class="animated fadeInLeftBig">{{$event->name}} <span>Lemonade</span></h1>
             <p class="animated fadeInRightBig">Bootstrap - Responsive Design - Retina Ready - Parallax</p>
-            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
+            <!-- <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Show</a> -->
           </div>
         </div>
         <?php $x++;
       ?>
         @endforeach
-        <!-- <div class="item" style="background-image: url(images/slider/2.jpg)">
-          <div class="caption">
-            <h1 class="animated fadeInLeftBig">Say Hello to <span>Lemonade</span></h1>
-            <p class="animated fadeInRightBig">Bootstrap - Responsive Design - Retina Ready - Parallax</p>
-            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
-          </div>
-        </div>
-        <div class="item" style="background-image: url(images/slider/3.jpg)">
-          <div class="caption">
-            <h1 class="animated fadeInLeftBig">We are <span>Creative</span></h1>
-            <p class="animated fadeInRightBig">Bootstrap - Responsive Design - Retina Ready - Parallax</p>
-            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
-          </div>
-        </div>
-      </div> -->
+     
       <a class="left-control" href="#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
       <a class="right-control" href="#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
 
       <a id="tohash" href="#services"><i class="fa fa-angle-down"></i></a>
 
     </div><!--/#home-slider-->
+
+    <style>
+    .main-nav{
+      background-color:#fcfcbc;
+    }
+    </style>
     <div class="main-nav">
       <div class="container">
         <div class="navbar-header">
@@ -89,8 +171,7 @@
             <li class="scroll"><a href="#services">Schedule</a></li> 
             <li class="scroll"><a href="#about-us">About Us</a></li>                     
             <li class="scroll"><a href="#portfolio">Events</a></li>
-
-            <li class="scroll"><a href="#blog">Blog</a></li>
+            <!-- <li class="scroll"><a href="#blog">Blog</a></li> -->
             <li class="scroll"><a href="#contact">Contact</a></li>       
           </ul>
         </div>
@@ -184,416 +265,77 @@
     </div>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3">
-          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
-            <div class="folio-image">
-              <img class="img-responsive" src="images/portfolio/1.jpg" alt="">
-            </div>
-            <div class="overlay">
-              <div class="overlay-content">
-                <div class="overlay-text">
-                  <div class="folio-info">
-                    <h3>Time Hours</h3>
-                    <p>Design, Photography</p>
-                  </div>
-                  <div class="folio-overview">
-                    <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
-                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="col-xs-8" style="float: none; margin: 0 auto;">
+
+        <div class="container">
+
+  		<!-- THE YOUTUBE PLAYER -->
+  		<div class="vid-container">
+		    <iframe id="vid_frame" src="https://www.youtube.com/embed/eg6kNoJmzkY?rel=0&amp;showinfo=0&amp;autohide=1&amp;vq=large" frameborder="0" width="100%" height="500"></iframe>
+		</div>
+
+		<!-- THE PLAYLIST -->
+		<div class="vid-list-container">
+	        <div class="vid-list">
+	         	
+ 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/eg6kNoJmzkY?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
+ 	              <div class="thumb"><img src="http://img.youtube.com/vi/eg6kNoJmzkY/0.jpg"></div>
+ 	              <div class="desc">Jessica Hernandez &amp; the Deltas - Dead Brains</div>
+ 	            </div>
+ 	          
+ 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/_Tz7KROhuAw?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
+ 	              <div class="thumb"><img src="http://img.youtube.com/vi/_Tz7KROhuAw/0.jpg"></div>
+ 	              <div class="desc">Barbatuques - CD Tum Pá - Sambalelê</div>
+ 	            </div>
+
+ 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/F1f-gn_mG8M?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
+ 	              <div class="thumb"><img src="http://img.youtube.com/vi/F1f-gn_mG8M/0.jpg"></div>
+ 	              <div class="desc">Eleanor Turner plays Baroque Flamenco</div>
+ 	            </div>
+
+ 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/fB8UTheTR7s?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
+ 	              <div class="thumb"><img src="http://img.youtube.com/vi/fB8UTheTR7s/0.jpg"></div>
+ 	              <div class="desc">Sleepy Man Banjo Boys: Bluegrass</div>
+ 	            </div>
+
+ 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/0SNhAKyXtC8?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
+ 	              <div class="thumb"><img src="http://img.youtube.com/vi/0SNhAKyXtC8/0.jpg"></div>
+ 	              <div class="desc">Edmar Castaneda: NPR Music Tiny Desk Concert</div>
+ 	            </div>
+
+ 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/RTHI_uGyfTM?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
+ 	              <div class="thumb"><img src="http://img.youtube.com/vi/RTHI_uGyfTM/0.jpg"></div>
+ 	              <div class="desc">Winter Harp performs Caravan</div>
+ 	            </div>
+ 	          
+ 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/abQRt6p8T7g?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
+ 	              <div class="thumb"><img src="http://img.youtube.com/vi/abQRt6p8T7g/0.jpg"></div>
+ 	              <div class="desc">The Avett Brothers Tiny Desk Concert</div>
+ 	            </div>
+
+ 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/fpmN9JorFew?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
+ 	              <div class="thumb"><img src="http://img.youtube.com/vi/fpmN9JorFew/0.jpg"></div>
+ 	              <div class="desc">Tracy Chapman - Give Me One Reason</div>
+ 	            </div>
+
+	 	    </div>
         </div>
-        <div class="col-sm-3">
-          <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="400ms">
-            <div class="folio-image">
-              <img class="img-responsive" src="images/portfolio/2.jpg" alt="">
-            </div>
-            <div class="overlay">
-              <div class="overlay-content">
-                <div class="overlay-text">
-                  <div class="folio-info">
-                    <h3>Time Hours</h3>
-                    <p>Design, Photography</p>
-                  </div>
-                  <div class="folio-overview">
-                    <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
-                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
+        <!-- LEFT AND RIGHT ARROWS -->
+        <div class="arrows">
+        	<div class="arrow-left"><i class="fa fa-chevron-left fa-lg"></i></div>
+        	<div class="arrow-right"><i class="fa fa-chevron-right fa-lg"></i></div>
         </div>
-        <div class="col-sm-3">
-          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="500ms">
-            <div class="folio-image">
-              <img class="img-responsive" src="images/portfolio/3.jpg" alt="">
-            </div>
-            <div class="overlay">
-              <div class="overlay-content">
-                <div class="overlay-text">
-                  <div class="folio-info">
-                    <h3>Time Hours</h3>
-                    <p>Design, Photography</p>
-                  </div>
-                  <div class="folio-overview">
-                    <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
-                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+  	</div>
           </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="600ms">
-            <div class="folio-image">
-              <img class="img-responsive" src="images/portfolio/4.jpg" alt="">
-            </div>
-            <div class="overlay">
-              <div class="overlay-content">
-                <div class="overlay-text">
-                  <div class="folio-info">
-                    <h3>Time Hours</h3>
-                    <p>Design, Photography</p>
-                  </div>
-                  <div class="folio-overview">
-                    <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
-                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="700ms">
-            <div class="folio-image">
-              <img class="img-responsive" src="images/portfolio/5.jpg" alt="">
-            </div>
-            <div class="overlay">
-              <div class="overlay-content">
-                <div class="overlay-text">
-                  <div class="folio-info">
-                    <h3>Time Hours</h3>
-                    <p>Design, Photography</p>
-                  </div>
-                  <div class="folio-overview">
-                    <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
-                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="800ms">
-            <div class="folio-image">
-              <img class="img-responsive" src="images/portfolio/6.jpg" alt="">
-            </div>
-            <div class="overlay">
-              <div class="overlay-content">
-                <div class="overlay-text">
-                  <div class="folio-info">
-                    <h3>Time Hours</h3>
-                    <p>Design, Photography</p>
-                  </div>
-                  <div class="folio-overview">
-                    <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
-                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="900ms">
-            <div class="folio-image">
-              <img class="img-responsive" src="images/portfolio/7.jpg" alt="">
-            </div>
-            <div class="overlay">
-              <div class="overlay-content">
-                <div class="overlay-text">
-                  <div class="folio-info">
-                    <h3>Time Hours</h3>
-                    <p>Design, Photography</p>
-                  </div>
-                  <div class="folio-overview">
-                    <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
-                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="1000ms">
-            <div class="folio-image">
-              <img class="img-responsive" src="images/portfolio/8.jpg" alt="">
-            </div>
-            <div class="overlay">
-              <div class="overlay-content">
-                <div class="overlay-text">
-                  <div class="folio-info">
-                    <h3>Time Hours</h3>
-                    <p>Design, Photography</p>
-                  </div>
-                  <div class="folio-overview">
-                    <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
-                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        </div>    
+       </div>
     </div>
-    <div id="portfolio-single-wrap">
-      <div id="portfolio-single">
-      </div>
-    </div><!-- /#portfolio-single-wrap -->
   </section><!--/#portfolio-->
 
-
-
-  <!-- <section id="features" class="parallax">
-    <div class="container">
-      <div class="row count">
-        <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="300ms">
-          <i class="fa fa-user"></i>
-          <h3 class="timer">4000</h3>
-          <p>Happy Clients</p>
-        </div>
-        <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
-          <i class="fa fa-desktop"></i>
-          <h3 class="timer">200</h3>                    
-          <p>Modern Websites</p>
-        </div> 
-        <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="700ms">
-          <i class="fa fa-trophy"></i>
-          <h3 class="timer">10</h3>                    
-          <p>WINNING AWARDS</p>
-        </div> 
-        <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="900ms">
-          <i class="fa fa-comment-o"></i>                    
-          <h3>24/7</h3>
-          <p>Fast Support</p>
-        </div>                 
-      </div>
-    </div>
-  </section> -->
-  <!--/#features-->
-
-  <section id="pricing">
-    <div class="container">
-      <div class="row">
-        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">
-          <h2>Pricing Table</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
-        </div>
-      </div>
-      <div class="pricing-table">
-        <div class="row">
-          <div class="col-sm-3">
-            <div class="single-table wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
-              <h3>Basic</h3>
-              <div class="price">
-                $9<span>/Month</span>                          
-              </div>
-              <ul>
-                <li>Free Setup</li>
-                <li>10GB Storage</li>
-                <li>100GB Bandwith</li>
-                <li>5 Products</li>
-              </ul>
-              <a href="#" class="btn btn-lg btn-primary">Sign up</a>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="single-table wow flipInY" data-wow-duration="1000ms" data-wow-delay="500ms">
-              <h3>Standard</h3>
-              <div class="price">
-                $19<span>/Month</span>                                
-              </div>
-              <ul>
-                <li>Free Setup</li>
-                <li>10GB Storage</li>
-                <li>100GB Bandwith</li>
-                <li>5 Products</li>
-              </ul>
-              <a href="#" class="btn btn-lg btn-primary">Sign up</a>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="single-table featured wow flipInY" data-wow-duration="1000ms" data-wow-delay="800ms">
-              <h3>Featured</h3>
-              <div class="price">
-                $29<span>/Month</span>                                
-              </div>
-              <ul>
-                <li>Free Setup</li>
-                <li>10GB Storage</li>
-                <li>100GB Bandwith</li>
-                <li>5 Products</li>
-              </ul>
-              <a href="#" class="btn btn-lg btn-primary">Sign up</a>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="single-table wow flipInY" data-wow-duration="1000ms" data-wow-delay="1100ms">
-              <h3>Professional</h3>
-              <div class="price">
-                $49<span>/Month</span>                    
-              </div>
-              <ul>
-                <li>Free Setup</li>
-                <li>10GB Storage</li>
-                <li>100GB Bandwith</li>
-                <li>5 Products</li>
-              </ul>
-              <a href="#" class="btn btn-lg btn-primary">Sign up</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section><!--/#pricing-->
-
-  <section id="twitter" class="parallax">
-    <div>
-      <a class="twitter-left-control" href="#twitter-carousel" role="button" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-      <a class="twitter-right-control" href="#twitter-carousel" role="button" data-slide="next"><i class="fa fa-angle-right"></i></a>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <div class="twitter-icon text-center">
-              <i class="fa fa-twitter"></i>
-              <h4>Themeum</h4>
-            </div>
-            <div id="twitter-carousel" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
-                <div class="item active wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-                  <p>Introducing Shortcode generator for Helix V2 based templates <a href="#"><span>#helixframework #joomla</span> http://bit.ly/1qlgwav</a></p>
-                </div>
-                <div class="item">
-                  <p>Introducing Shortcode generator for Helix V2 based templates <a href="#"><span>#helixframework #joomla</span> http://bit.ly/1qlgwav</a></p>
-                </div>
-                <div class="item">                                
-                  <p>Introducing Shortcode generator for Helix V2 based templates <a href="#"><span>#helixframework #joomla</span> http://bit.ly/1qlgwav</a></p>
-                </div>
-              </div>                        
-            </div>                    
-          </div>
-        </div>
-      </div>
-    </div>
-  </section><!--/#twitter-->
-
-  <section id="blog">
-    <div class="container">
-      <div class="row">
-        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">
-          <h2>Blog Posts</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
-        </div>
-      </div>
-      <div class="blog-posts">
-        <div class="row">
-          <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">
-            <div class="post-thumb">
-              <a href="#"><img class="img-responsive" src="images/blog/1.jpg" alt=""></a> 
-              <div class="post-meta">
-                <span><i class="fa fa-comments-o"></i> 3 Comments</span>
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
-              </div>
-              <div class="post-icon">
-                <i class="fa fa-pencil"></i>
-              </div>
-            </div>
-            <div class="entry-header">
-              <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
-              <span class="date">June 26, 2014</span>
-              <span class="cetagory">in <strong>Photography</strong></span>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-          </div>
-          <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="600ms">
-            <div class="post-thumb">
-              <div id="post-carousel"  class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#post-carousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#post-carousel" data-slide-to="1"></li>
-                  <li data-target="#post-carousel" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="item active">
-                    <a href="#"><img class="img-responsive" src="images/blog/2.jpg" alt=""></a>
-                  </div>
-                  <div class="item">
-                    <a href="#"><img class="img-responsive" src="images/blog/1.jpg" alt=""></a>
-                  </div>
-                  <div class="item">
-                    <a href="#"><img class="img-responsive" src="images/blog/3.jpg" alt=""></a>
-                  </div>
-                </div>                               
-                <a class="blog-left-control" href="#post-carousel" role="button" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-                <a class="blog-right-control" href="#post-carousel" role="button" data-slide="next"><i class="fa fa-angle-right"></i></a>
-              </div>                            
-              <div class="post-meta">
-                <span><i class="fa fa-comments-o"></i> 3 Comments</span>
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
-              </div>
-              <div class="post-icon">
-                <i class="fa fa-picture-o"></i>
-              </div>
-            </div>
-            <div class="entry-header">
-              <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
-              <span class="date">June 26, 2014</span>
-              <span class="cetagory">in <strong>Photography</strong></span>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-          </div>
-          <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="800ms">
-            <div class="post-thumb">
-              <a href="#"><img class="img-responsive" src="images/blog/3.jpg" alt=""></a>
-              <div class="post-meta">
-                <span><i class="fa fa-comments-o"></i> 3 Comments</span>
-                <span><i class="fa fa-heart"></i> 0 Likes</span> 
-              </div>
-              <div class="post-icon">
-                <i class="fa fa-video-camera"></i>
-              </div>
-            </div>
-            <div class="entry-header">
-              <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h3>
-              <span class="date">June 26, 2014</span>
-              <span class="cetagory">in <strong>Photography</strong></span>
-            </div>
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-          </div>                    
-        </div>
-        <div class="load-more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
-          <a href="#" class="btn-loadmore"><i class="fa fa-repeat"></i> Load More</a>
-        </div>                
-      </div>
-    </div>
-  </section><!--/#blog-->
-
   <section id="contact">
-    <div id="google-map" class="wow fadeIn" data-latitude="52.365629" data-longitude="4.871331" data-wow-duration="1000ms" data-wow-delay="400ms"></div>
+    <!-- <div id="google-map" class="wow fadeIn" data-latitude="52.365629" data-longitude="4.871331" data-wow-duration="1000ms" data-wow-delay="400ms"></div> -->
     <div id="contact-us" class="parallax">
       <div class="container">
         <div class="row">
@@ -605,7 +347,7 @@
         <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
           <div class="row">
             <div class="col-sm-6">
-              <form id="main-contact-form" name="contact-form" method="post" action="#">
+              <form  method="post" action="{{url('event/mail/send/bookevent')}}">
                 <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -621,6 +363,29 @@
                 <div class="form-group">
                   <input type="text" name="subject" class="form-control" placeholder="Subject" required="required">
                 </div>
+                <div class="form-group">                  
+                  <input type="text"  name="phone" class="form-control" placeholder="08123456789" required="required">
+                  
+ 
+                </div>
+                <div class="form-group">
+                  
+                  {{ Form::date('date', Carbon\Carbon::now()->format('d/m/Y H:i'),['class' => 'form-control'], ['placeholder' => '24/12/2017 16:58']) }}
+ 
+                </div>
+
+                <div class="form-group">
+                  <!-- <input type="text" id="schedule" name="schedule" class="form-control" placeholder="Date and time" required="required"> -->
+                  {{ Form::time('starthour', Carbon\Carbon::now()->format('d/m/Y H:i'),['class' => 'form-control'], ['placeholder' => '24/12/2017 16:58']) }}
+ 
+                </div>
+                <div class="form-group">
+                  <!-- <input type="text" id="schedule" name="schedule" class="form-control" placeholder="Date and time" required="required"> -->
+                  {{ Form::time('endhour', Carbon\Carbon::now()->format('d/m/Y H:i'),['class' => 'form-control'], ['placeholder' => '24/12/2017 16:58']) }}
+ 
+                </div>
+
+         
                 <div class="form-group">
                   <textarea name="message" id="message" class="form-control" rows="4" placeholder="Enter your message" required="required"></textarea>
                 </div>                        
@@ -673,7 +438,24 @@
       </div>
     </div>
   </footer>
-
+<script>
+$(document).ready(function () {
+    $(".arrow-right").bind("click", function (event) {
+        event.preventDefault();
+        $(".vid-list-container").stop().animate({
+            scrollLeft: "+=336"
+        }, 750);
+    });
+    $(".arrow-left").bind("click", function (event) {
+        event.preventDefault();
+        $(".vid-list-container").stop().animate({
+            scrollLeft: "-=336"
+        }, 750);
+    });
+});
+</script>
+  
+  
   <script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>

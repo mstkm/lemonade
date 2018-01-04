@@ -59,6 +59,28 @@ Route::post('admin/paket/update/{id}', 'paketController@update');
 Route::get('admin/paket/delete/{id}', 'paketController@destroy');
 Route::post('admin/paket/store', 'paketController@store');
 
+
+
+
+Route::post('event/mail/send/bookevent', 
+'MailController@sendBook'
+// function(){
+//     return new App\Mail\bookEventMail;
+// }
+);
+
+Route::get('event/mail/read/bookevent', 
+'MailController@index'
+);
+//Route::get('admin/paket/{id}', 'paketController@show');
+// Route::get('admin/paket/create', 'paketController@create');
+// Route::get('admin/paket/book/{id}', 'paketController@bookpaket');
+// Route::get('admin/paket/dppaket/{id}', 'paketController@dppaket');
+// Route::get('admin/paket/edit/{id}', 'paketController@edit');
+// Route::post('admin/paket/update/{id}', 'paketController@update');
+// Route::get('admin/paket/delete/{id}', 'paketController@destroy');
+// Route::post('admin/paket/store', 'paketController@store');
+
 // });
 
 	
