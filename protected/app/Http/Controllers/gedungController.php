@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Gedung;
+use App\Paket;
+use App\Kostum;
+
+
 
 class gedungController extends Controller
 {
@@ -27,11 +31,8 @@ class gedungController extends Controller
      */
     public function create()
     {
-        $gedungs=Gedung::all();
-        $paket=Paket::all();
-        $kostum=Kostum::all();
-        // return $gedung;
-        return view('gedung.create', compact('gedungs','paket','kostum'));
+   
+        return view('gedung.create');
     }
 
     /**

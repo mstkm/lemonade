@@ -17,7 +17,8 @@ class CreateFotosTable extends Migration
             $table->increments('id');
             $table->string('name', 100);
             $table->integer('artikel_id')->unsigned();
-            $table->foreign('artikel_id')->references('id')->on('artikels');
+            $table->foreign('artikel_id')->references('id')->on('artikels')->onDelete('cascade');
+            $table->boolean('is_deleted')->default('0');
             $table->timestamps();
 
         });

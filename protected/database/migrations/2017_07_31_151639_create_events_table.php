@@ -23,19 +23,16 @@ class CreateEventsTable extends Migration
             $table->string('gedung');
             $table->string('keterangan');
             $table->integer('paket_id')->unsigned();
-            $table->foreign('paket_id')->references('id')->on('pakets');
-
+            $table->foreign('paket_id')->references('id')->on('pakets')->onDelete('cascade');
             $table->integer('kostum_id')->unsigned();
-            $table->foreign('kostum_id')->references('id')->on('kostums');
-
+            $table->foreign('kostum_id')->references('id')->on('kostums')->onDelete('cascade');
             $table->integer('klien_id')->unsigned();
-            $table->foreign('klien_id')->references('id')->on('kliens');
-
+            $table->foreign('klien_id')->references('id')->on('kliens')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('gedung_id')->unsigned();
-            $table->foreign('gedung_id')->references('id')->on('gedungs');
+            $table->foreign('gedung_id')->references('id')->on('gedungs')->onDelete('cascade');
+            $table->boolean('is_deleted')->default('0');
             $table->timestamps();
 
         });

@@ -140,6 +140,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        Alaouy\Youtube\YoutubeServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -193,6 +194,8 @@ return [
 
     'aliases' => [
 
+        
+        'Youtube' => Alaouy\Youtube\Facades\Youtube::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'App' => Illuminate\Support\Facades\App::class,

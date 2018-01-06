@@ -18,6 +18,7 @@ class CreateKostumsTable extends Migration
             $table->string('name', 30);
             $table->string('foto');
             $table->string('keterangan');
+            $table->boolean('is_deleted')->default('0');
             $table->timestamps();
 
         });

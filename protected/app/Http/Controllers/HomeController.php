@@ -11,6 +11,7 @@ use App\User;
 use App\Paket;
 use App\Event;
 use App\Gedung;
+use App\Video;
 use Calendar;
 
 class HomeController extends Controller
@@ -30,9 +31,27 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    // function youtube_title($id) {
+    //     // $id = 'YOUTUBE_ID';
+    //     // returns a single line of JSON that contains the video title. Not a giant request.
+    //     $videoTitle = file_get_contents("https://www.googleapis.com/youtube/v3/videos?id=".$id."&key=YOUR_API_KEY&fields=items(id,snippet(title),statistics)&part=snippet,statistics");
+    //     // despite @ suppress, it will be false if it fails
+    //     if ($videoTitle) {
+    //     $json = json_decode($videoTitle, true);
+        
+    //     return $json['items'][0]['snippet']['title'];
+    //     } else {
+    //     return false;
+    //     }
+    //     }
+
     public function index()
     {
         $event=Event::all();        
+        $yutub=Video::where([['is_top','1'],['is_show','1'],['is_deleted','0']])->first();
+        $allyutub=Video::where([['is_top','0'],['is_show','1'],['is_deleted','0']])->get();
         //return $event;
         $events = [];     
             foreach ($event as $key => $value) {
@@ -52,9 +71,10 @@ class HomeController extends Controller
         
         $calendar = Calendar::addEvents($events); 
 
+        // return $allyutub;
        
 
-        return view('index',compact('event','calendar'));
+        return view('index',compact('event','calendar','yutub','allyutub'));
     }
     public function event()
     {

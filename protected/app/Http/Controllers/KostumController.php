@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kostum;
+use App\Gedung;
+use App\Paket;
 
 class KostumController extends Controller
 {

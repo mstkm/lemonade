@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Paket;
-
+use App\Kostum;
+use App\Gedung;
 
 class PaketController extends Controller
 {

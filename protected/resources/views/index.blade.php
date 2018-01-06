@@ -147,12 +147,7 @@
 
     </div><!--/#home-slider-->
 
-    <style>
-    .main-nav{
-      background-color:#fcfcbc;
-    }
-    </style>
-    <div class="main-nav">
+    <div class="main-nav" style="background-color:#fcfcbc;">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -271,52 +266,22 @@
 
   		<!-- THE YOUTUBE PLAYER -->
   		<div class="vid-container">
-		    <iframe id="vid_frame" src="https://www.youtube.com/embed/eg6kNoJmzkY?rel=0&amp;showinfo=0&amp;autohide=1&amp;vq=large" frameborder="0" width="100%" height="500"></iframe>
+		    <iframe id="vid_frame" src="{{$yutub->url}}" frameborder="0" width="100%" height="500"></iframe>
 		</div>
 
 		<!-- THE PLAYLIST -->
 		<div class="vid-list-container">
 	        <div class="vid-list">
+          @foreach($allyutub as $videos)
 	         	
- 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/eg6kNoJmzkY?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
- 	              <div class="thumb"><img src="http://img.youtube.com/vi/eg6kNoJmzkY/0.jpg"></div>
- 	              <div class="desc">Jessica Hernandez &amp; the Deltas - Dead Brains</div>
+ 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='{{$videos->url}}'">
+ 	              <div class="thumb"><img src="{{$videos->image}}"></div>
+ 	              <div class="desc">                
+                 
+                 {{$videos->title}}
+                 </div>
  	            </div>
- 	          
- 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/_Tz7KROhuAw?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
- 	              <div class="thumb"><img src="http://img.youtube.com/vi/_Tz7KROhuAw/0.jpg"></div>
- 	              <div class="desc">Barbatuques - CD Tum Pá - Sambalelê</div>
- 	            </div>
-
- 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/F1f-gn_mG8M?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
- 	              <div class="thumb"><img src="http://img.youtube.com/vi/F1f-gn_mG8M/0.jpg"></div>
- 	              <div class="desc">Eleanor Turner plays Baroque Flamenco</div>
- 	            </div>
-
- 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/fB8UTheTR7s?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
- 	              <div class="thumb"><img src="http://img.youtube.com/vi/fB8UTheTR7s/0.jpg"></div>
- 	              <div class="desc">Sleepy Man Banjo Boys: Bluegrass</div>
- 	            </div>
-
- 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/0SNhAKyXtC8?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
- 	              <div class="thumb"><img src="http://img.youtube.com/vi/0SNhAKyXtC8/0.jpg"></div>
- 	              <div class="desc">Edmar Castaneda: NPR Music Tiny Desk Concert</div>
- 	            </div>
-
- 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/RTHI_uGyfTM?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
- 	              <div class="thumb"><img src="http://img.youtube.com/vi/RTHI_uGyfTM/0.jpg"></div>
- 	              <div class="desc">Winter Harp performs Caravan</div>
- 	            </div>
- 	          
- 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/abQRt6p8T7g?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
- 	              <div class="thumb"><img src="http://img.youtube.com/vi/abQRt6p8T7g/0.jpg"></div>
- 	              <div class="desc">The Avett Brothers Tiny Desk Concert</div>
- 	            </div>
-
- 	            <div class="vid-item" onclick="document.getElementById('vid_frame').src='http://youtube.com/embed/fpmN9JorFew?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1'">
- 	              <div class="thumb"><img src="http://img.youtube.com/vi/fpmN9JorFew/0.jpg"></div>
- 	              <div class="desc">Tracy Chapman - Give Me One Reason</div>
- 	            </div>
+          @endforeach
 
 	 	    </div>
         </div>
@@ -335,7 +300,7 @@
   </section><!--/#portfolio-->
 
   <section id="contact">
-    <!-- <div id="google-map" class="wow fadeIn" data-latitude="52.365629" data-longitude="4.871331" data-wow-duration="1000ms" data-wow-delay="400ms"></div> -->
+    
     <div id="contact-us" class="parallax">
       <div class="container">
         <div class="row">
@@ -368,11 +333,20 @@
                   
  
                 </div>
+               
+                      
                 <div class="form-group">
-                  
-                  {{ Form::date('date', Carbon\Carbon::now()->format('d/m/Y H:i'),['class' => 'form-control'], ['placeholder' => '24/12/2017 16:58']) }}
+                        
+                       
+                            <input id="date" type="text" class="form-control" name="date" value="{{ old('date') }}" required>
+                       
+                    </div>
  
-                </div>
+                    <script type="text/javascript">
+                          $('#date').datepicker({
+                            autoclose: true
+                          })
+                    </script> 
 
                 <div class="form-group">
                   <!-- <input type="text" id="schedule" name="schedule" class="form-control" placeholder="Date and time" required="required"> -->
@@ -410,11 +384,11 @@
       </div>
     </div>        
   </section><!--/#contact-->
-  <footer id="footer">
-    <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-      <div class="container text-center">
-        <div class="footer-logo">
-          <a href="index.html"><img class="img-responsive" src="images/logo.png" alt=""></a>
+  <footer id="footer" style="background-color:#fcfcbc;">
+    <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms" style="background-color:#fcfcbc;">
+      <div class="container text-center" style="background-color:#fcfcbc;">
+        <div class="footer-logo" style="background-color:#fcfcbc;">
+          <a href="index.html"><img class="img-responsive" src="{{asset('images/logo.png')}}" alt=""></a>
         </div>
         <div class="social-icons">
           <ul>
@@ -454,8 +428,20 @@ $(document).ready(function () {
     });
 });
 </script>
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
   
-  
+  <!-- date-range-picker -->
+<script src="{{ asset('bower_components/moment/min/moment.min.js')}}"></script>
+<script src="{{ asset('bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+<!-- bootstrap datepicker -->
+<script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+<!-- bootstrap color picker -->
+<script src="{{ asset('bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}"></script>
+<!-- bootstrap time picker -->
+<script src="{{ asset('plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>

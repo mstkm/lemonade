@@ -17,6 +17,7 @@ class CreateGedungsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('alamat');
+            $table->boolean('is_deleted')->default('0');
             $table->string('keterangan')->nullable();
             $table->timestamps();
         });

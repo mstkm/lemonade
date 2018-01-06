@@ -21,7 +21,8 @@ class CreateKpembayaransTable extends Migration
             $table->string('cara', 30);
             $table->string('foto');
             $table->integer('event_id')->unsigned();
-            $table->foreign('event_id')->references('id')->on('events');
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+            $table->boolean('is_deleted')->default('0');
             $table->timestamps();
 
         });

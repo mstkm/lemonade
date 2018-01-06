@@ -31,37 +31,13 @@
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">HEADER</li>
-      <!-- Optionally, you can add icons to the links -->
+
       <li class="active"><a href="{{ url('admin/event') }}"><i class="fa fa-calendar-check-o"></i> <span>Event</span></a></li>
       <li class="active"><a href="{{ url('admin/gedung') }}"><i class="fa fa-building"></i> <span>Gedung</span></a></li>
       <li class="active"><a href="{{ url('admin/kostum') }}"><i class="fa fa-black-tie"></i> <span>Kostum</span></a></li>
       <li class="active"><a href="{{ url('admin/paket') }}"><i class="fa fa-dropbox"></i> <span>Paket</span></a></li>
-      <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-      <li class="treeview">
-        <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-         <ul class="treeview-menu">
-      
-          <li>
-              <a href="{{ url('event') }}">Event</a>
-              </li>
-          <li><a href="{{ url('tambahevent') }}">Tambah Event</a>
-          </li>
-          <li><a href="{{ url('tambahpaket') }}">Tambah Paket</a>
-          </li>
-          <li><a href="{{ url('tambahkostum') }}">Tambah Kostum</a>
-          </li>
-          <li><a href="{{ url('tambahgedung') }}">Tambah Gedung</a>
-          </li>
-          <li><a href="{{ url('indexpaket') }}">Paket</a>
-          </li>
-          <li><a href="{{ url('mainkostum') }}">Kostum</a>
-              </li>
-        </ul> 
-      </li> -->
+      <li class="active"><a href="{{ url('admin/youtube') }}"><i class="fa fa-forward"></i> <span>Youtube</span></a></li>
+
 
     </ul>
     <!-- /.sidebar-menu -->

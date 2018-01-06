@@ -72,14 +72,14 @@ Route::post('event/mail/send/bookevent',
 Route::get('event/mail/read/bookevent', 
 'MailController@index'
 );
-//Route::get('admin/paket/{id}', 'paketController@show');
-// Route::get('admin/paket/create', 'paketController@create');
-// Route::get('admin/paket/book/{id}', 'paketController@bookpaket');
-// Route::get('admin/paket/dppaket/{id}', 'paketController@dppaket');
-// Route::get('admin/paket/edit/{id}', 'paketController@edit');
-// Route::post('admin/paket/update/{id}', 'paketController@update');
-// Route::get('admin/paket/delete/{id}', 'paketController@destroy');
-// Route::post('admin/paket/store', 'paketController@store');
+Route::get('admin/youtube', 'YoutubeController@index');
+Route::get('admin/youtube/create', 'YoutubeController@create');
+Route::get('admin/youtube/book/{id}', 'YoutubeController@bookyoutube');
+Route::get('admin/youtube/dpyoutube/{id}', 'YoutubeController@dpyoutube');
+Route::get('admin/youtube/edit/{id}', 'YoutubeController@edit');
+Route::post('admin/youtube/update/{id}', 'YoutubeController@update');
+Route::get('admin/youtube/delete/{id}', 'YoutubeController@destroy');
+Route::post('admin/youtube/store', 'YoutubeController@store');
 
 // });
 

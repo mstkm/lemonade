@@ -54,48 +54,6 @@
   </div>
 </div>
 
-<!-- <script>
-window.onload = function() {
-    if (window.moment) {  
-        // jQuery is loaded  
-        alert("Yeah!");
-    } else {
-        // jQuery is not loaded
-        alert("Doesn't Work");
-    }
-}
-</script> -->
-
-
-<!-- bootstrap time picker -->
-
-
-
-<!-- <script src="{{ asset('bower_components/jquery/dist/jquery.js')}}"></script>
-<script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-<script src="{{ asset('/bower_components/moment/moment.js')}}"></script>
-
-<script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
-
-<!-- Bootstrap 3.3.7 -->
-
-<!-- Select2 -->
-<!-- <script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js')}}"></script> -->
-<!-- InputMask -->
-<!-- <script src="{{ asset('plugins/input-mask/jquery.inputmask.js')}}"></script> -->
-<!-- <script src="{{ asset('plugins/input-mask/jquery.inputmask.extensions.js')}}"></script> -->
-<!-- bootstrap time picker -->
-<!-- <script src="{{ asset('plugins/timepicker/bootstrap-timepicker.min.js')}}"></script> -->
-<!-- SlimScroll -->
-<!-- <script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script> -->
-<!-- iCheck 1.0.1 -->
-<!-- <script src="{{ asset('plugins/iCheck/icheck.min.js')}}"></script> -->
-<!-- FastClick -->
-<!-- <script src="{{ asset('bower_components/fastclick/lib/fastclick.js')}}"></script> -->
-<!-- AdminLTE App -->
-<!-- <script src="{{ asset('dist/js/adminlte.min.js')}}"></script> -->
-<!-- AdminLTE for demo purposes -->
-<!-- <script src="{{ asset('dist/js/demo.js')}}"></script> --> 
 <script src="{{ asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
@@ -127,9 +85,7 @@ window.onload = function() {
 
 
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>                   
+                
 
      
 <script type="text/javascript">

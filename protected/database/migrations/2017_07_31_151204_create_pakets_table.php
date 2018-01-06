@@ -18,6 +18,7 @@ class CreatePaketsTable extends Migration
             $table->string('name', 30);
             $table->integer('harga');
             $table->string('keterangan');
+            $table->boolean('is_deleted')->default('0');
             $table->timestamps();
 
         });
