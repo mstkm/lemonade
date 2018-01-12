@@ -16,10 +16,21 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
-        $events = Event::where('is_deleted','!=','1')->get();
-        return view('event.index', compact('events'));
+        if(Auth::user()->jenis==='klien'){
+            return view('customer.profile');
+        }
+        elseif(Auth::user()->jenis==='admin'){
+            $events = Event::where('is_deleted','!=','1')->get();
+            return view('event.index', compact('events'));
+        }
+        
     }
 
     /**

@@ -109,7 +109,24 @@
 		right: 0;
 		top: -20px;
 	}
+
+  
 }
+
+#floating-button{
+  width: 95px;
+  height: 45px;
+  /* border-radius: 50%; */
+  background: #fcfcbc;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px #666;
+}
+
+
+
   </style>
 </head><!--/head-->
 
@@ -129,7 +146,7 @@
         {
           echo 'active';
         }
-      ?>" style="background-image: url({{asset('images/slider/'.($x+1).'.jpg')}}">
+      ?>" style="background-image: url({{asset('images/slider/'.$event->photo)}}">
           <div class="caption">
             <h1 class="animated fadeInLeftBig">{{$event->name}} <span>Lemonade</span></h1>
             <p class="animated fadeInRightBig">Bootstrap - Responsive Design - Retina Ready - Parallax</p>
@@ -147,6 +164,11 @@
 
     </div><!--/#home-slider-->
 
+
+    <div id="floating-button" >
+  <a href="{{url('login')}}">    <h4 class="text-center" id="login">LOGIN</h4></a>
+    
+  </div>
     <div class="main-nav" style="background-color:#fcfcbc;">
       <div class="container">
         <div class="navbar-header">
@@ -266,7 +288,8 @@
 
   		<!-- THE YOUTUBE PLAYER -->
   		<div class="vid-container">
-		    <iframe id="vid_frame" src="{{$yutub->url}}" frameborder="0" width="100%" height="500"></iframe>
+		    <iframe id="vid_frame" src="
+        <?php echo str_replace('autoplay=1','autoplay=0',$yutub->url) ?>" frameborder="0" width="100%" height="500"></iframe>
 		</div>
 
 		<!-- THE PLAYLIST -->
@@ -301,75 +324,13 @@
 
   <section id="contact">
     
-    <div id="contact-us" class="parallax">
+    <div id="contact-us" class="parallax text-center">
       <div class="container">
         <div class="row">
           <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
             <h2>Contact Us</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
-          </div>
-        </div>
-        <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
-          <div class="row">
-            <div class="col-sm-6">
-              <form  method="post" action="{{url('event/mail/send/bookevent')}}">
-                <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <input type="text" name="name" class="form-control" placeholder="Name" required="required">
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <input type="email" name="email" class="form-control" placeholder="Email Address" required="required">
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <input type="text" name="subject" class="form-control" placeholder="Subject" required="required">
-                </div>
-                <div class="form-group">                  
-                  <input type="text"  name="phone" class="form-control" placeholder="08123456789" required="required">
-                  
- 
-                </div>
-               
-                      
-                <div class="form-group">
-                        
-                       
-                            <input id="date" type="text" class="form-control" name="date" value="{{ old('date') }}" required>
-                       
-                    </div>
- 
-                    <script type="text/javascript">
-                          $('#date').datepicker({
-                            autoclose: true
-                          })
-                    </script> 
-
-                <div class="form-group">
-                  <!-- <input type="text" id="schedule" name="schedule" class="form-control" placeholder="Date and time" required="required"> -->
-                  {{ Form::time('starthour', Carbon\Carbon::now()->format('d/m/Y H:i'),['class' => 'form-control'], ['placeholder' => '24/12/2017 16:58']) }}
- 
-                </div>
-                <div class="form-group">
-                  <!-- <input type="text" id="schedule" name="schedule" class="form-control" placeholder="Date and time" required="required"> -->
-                  {{ Form::time('endhour', Carbon\Carbon::now()->format('d/m/Y H:i'),['class' => 'form-control'], ['placeholder' => '24/12/2017 16:58']) }}
- 
-                </div>
-
-         
-                <div class="form-group">
-                  <textarea name="message" id="message" class="form-control" rows="4" placeholder="Enter your message" required="required"></textarea>
-                </div>                        
-                <div class="form-group">
-                  <button type="submit" class="btn-submit">Send Now</button>
-                </div>
-              </form>   
-            </div>
-            <div class="col-sm-6">
-              <div class="contact-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+       <br>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
                 <ul class="address">
                   <li><i class="fa fa-map-marker"></i> <span> Address:</span> 2400 South Avenue A </li>
@@ -379,8 +340,7 @@
                 </ul>
               </div>                            
             </div>
-          </div>
-        </div>
+    
       </div>
     </div>        
   </section><!--/#contact-->

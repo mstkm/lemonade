@@ -1,11 +1,18 @@
 @extends('layouts.main')
 
-@section('isi')
+@section('content')
 <div class="container">
     <div class="row">
     <h3>
     <!-- <a href="{{url('admin/event/create')}}" class="btn btn-primary">Add</a> -->
-    </h3>         
+    </h3>     	<div class="main">
+			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- BUTTONS -->
+							<div class="panel">    
   
     @if (session('status'))
                     <div class="alert alert-danger">
@@ -15,7 +22,9 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Tambah Event</h3>
+            <div class="panel-heading">
+									<h3 class="panel-title">Tambah Event</h3>
+								</div>
               <form class="form-horizontal" method="POST" action="{{ url('admin/event/store') }}">
                         {{ csrf_field() }}
           <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -41,6 +50,18 @@
                                         <option value="DP" >Tahap DP</option>
                                 </select> 
                             </div>
+                        </div>                        
+
+                        <div class="form-group">
+                            <label for="admin" class="col-md-4 control-label">Gedung</label>
+                            <div class="col-md-6">
+                                <select id="gedung_id" name="gedung_id" class="form-control" required>   
+                                        <option value="" disabled selected>------------Pilih Gedung----------------</option>
+                                        @foreach($gedung as $item)
+                                        <option value="{{$item->id}}" > {{$item->name}}</option>
+                                        @endforeach
+                                </select> 
+                            </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
@@ -54,18 +75,6 @@
                                         <strong>{{ $errors->first('alamat') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="admin" class="col-md-4 control-label">Gedung</label>
-                            <div class="col-md-6">
-                                <select id="gedung_id" name="gedung_id" class="form-control" required>   
-                                        <option value="" disabled selected>------------Pilih Gedung----------------</option>
-                                        @foreach($gedung as $item)
-                                        <option value="{{$item->id}}" >{{$item->name}}</option>
-                                        @endforeach
-                                </select> 
                             </div>
                         </div>
 
@@ -97,17 +106,16 @@
                             @endif
                         </div>
                         <div class="col-md-3">
-                            <input type="text" class="form-control time" name="endevent" value="{{ old('endevent') }}" required autofocus>
+                                <input type="text" class="form-control time" name="endevent" value="{{ old('endevent') }}" required autofocus>
 
-                            @if ($errors->has('endevent'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('endevent') }}</strong>
-                                </span>
-                            @endif
+                                @if ($errors->has('endevent'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('endevent') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
 
-             
 
                         <div class="form-group{{ $errors->has('keterangan') ? ' has-error' : '' }}">
                             <label for="keterangan" class="col-md-4 control-label">Keterangan</label>
@@ -158,6 +166,12 @@
                         </div>
                         </form>
           </div>
+        </div>
+    </div>
+    </div>
+        </div>
+    </div>
+    </div>
         </div>
     </div>
 </div>

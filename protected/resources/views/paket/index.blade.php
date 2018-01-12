@@ -1,23 +1,27 @@
 @extends('layouts.main')
 
-@section('isi')
-<div class="container">
-    <div class="row">
-    @if (session('status'))
+@section('content')
+<div class="main">
+			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="container-fluid">
+					<!-- <h3 class="page-title">Tables</h3> -->
+					<div class="row">
+						<div class="col-md-12">
+							<!-- BASIC TABLE -->
+							<div class="panel">
+								<div class="panel-heading">
+                                @if (session('status'))
                     <div class="alert alert-success">
                         {{ session('status') }}
                     </div>
                     @endif
     <h3>
+    @if(auth::user()->jenis=='admin')
     <a href="{{url('admin/paket/create')}}" class="btn btn-primary">Add</a>
-    </h3>         
-  
-
-          <!-- general form elements -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Daftar paket</h3>
-            </div>
+    @endif
+    </h3> 
+								</div>
            
               <table id="example1" class="table table-striped table-hover">
               <thead>
@@ -27,8 +31,9 @@
                   <th>Harga</th>
 
                   <th>Keterangan</th>
-
+                @if(auth::user()->jenis=='admin')
                   <th>Opsi</th>
+                  @endif
                       </tr>
               </thead>
               <tbody>
@@ -40,8 +45,10 @@
                                 <?php echo $x; ?>
                                 </td>
                                 <td>{{$paket->name}}</td>
-                                <td>{{$paket->harga}}</td>
-                                <td>{{$paket->keterangan}}</td>
+                                <td>Rp. <?php
+                                echo number_format($paket->harga);
+                                ?></td>
+                                <td>{{$paket->keterangan}}</td>@if(auth::user()->jenis=='admin')
                                 <td>
                                    
                                     <a href="{{url('admin/paket/edit/'.$paket->id)}}" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a> 
@@ -49,6 +56,7 @@
 
 
                                 </td>
+                                @endif
                   </tr>
               @endforeach
               

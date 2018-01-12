@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('isi')
+@section('content')
 <div class="container">
     <div class="row">
     <h3>

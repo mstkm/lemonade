@@ -14,6 +14,12 @@ class KostumController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $kostums = kostum::where('is_deleted','!=','1')->get();

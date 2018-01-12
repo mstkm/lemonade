@@ -1,15 +1,30 @@
 @extends('layouts.main')
 
-@section('isi')
-<br>
-<br>
-<br>
+@section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
+    <h3>
+    <!-- <a href="{{url('admin/event/create')}}" class="btn btn-primary">Add</a> -->
+    </h3>     	<div class="main">
+			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- BUTTONS -->
+							<div class="panel">    
+  
+    @if (session('status'))
+                    <div class="alert alert-danger">
+                        {{ session('status') }}
+                    </div>
+                    @endif
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+            <div class="panel-heading">
+									<h3 class="panel-title">Register</h3>
+								</div>
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
@@ -55,16 +70,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="admin" class="col-md-4 control-label">Position</label>
-                            <div class="col-md-6">
-                                <select id="jenis" name="jenis" class="form-control" required>   
-                                        <option value="" disabled selected>------------Pilih Layanan----------------</option>
-                                        <option value="owner" >Owner</option>
-                                        <option value="Admin" >Admin</option>
-                                </select> 
-                            </div>
-                        </div>
+                        <input type="hidden" name="jenis" value="klien">
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
@@ -97,6 +103,11 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
             </div>
         </div>
     </div>

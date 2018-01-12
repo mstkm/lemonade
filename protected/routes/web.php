@@ -29,9 +29,8 @@ Route::post('admin/event/store', 'EventController@store');
 
 Route::get('admin/gedung', 'gedungController@index');
 //Route::get('admin/gedung/{id}', 'gedungController@show');
+Route::get('admin/gedung/getAlamat/{id}', 'gedungController@getAlamat');
 Route::get('admin/gedung/create', 'gedungController@create');
-Route::get('admin/gedung/book/{id}', 'gedungController@bookgedung');
-Route::get('admin/gedung/dpgedung/{id}', 'gedungController@dpgedung');
 Route::get('admin/gedung/edit/{id}', 'gedungController@edit');
 Route::post('admin/gedung/update/{id}', 'gedungController@update');
 Route::get('admin/gedung/delete/{id}', 'gedungController@destroy');
@@ -41,8 +40,6 @@ Route::post('admin/gedung/store', 'gedungController@store');
 Route::get('admin/kostum', 'KostumController@index');
 //Route::get('admin/kostum/{id}', 'KostumController@show');
 Route::get('admin/kostum/create', 'KostumController@create');
-Route::get('admin/kostum/book/{id}', 'KostumController@bookkostum');
-Route::get('admin/kostum/dpkostum/{id}', 'KostumController@dpkostum');
 Route::get('admin/kostum/edit/{id}', 'KostumController@edit');
 Route::post('admin/kostum/update/{id}', 'KostumController@update');
 Route::get('admin/kostum/delete/{id}', 'KostumController@destroy');
@@ -52,8 +49,6 @@ Route::post('admin/kostum/store', 'KostumController@store');
 Route::get('admin/paket', 'paketController@index');
 //Route::get('admin/paket/{id}', 'paketController@show');
 Route::get('admin/paket/create', 'paketController@create');
-Route::get('admin/paket/book/{id}', 'paketController@bookpaket');
-Route::get('admin/paket/dppaket/{id}', 'paketController@dppaket');
 Route::get('admin/paket/edit/{id}', 'paketController@edit');
 Route::post('admin/paket/update/{id}', 'paketController@update');
 Route::get('admin/paket/delete/{id}', 'paketController@destroy');
@@ -72,15 +67,18 @@ Route::post('event/mail/send/bookevent',
 Route::get('event/mail/read/bookevent', 
 'MailController@index'
 );
+
+
 Route::get('admin/youtube', 'YoutubeController@index');
 Route::get('admin/youtube/create', 'YoutubeController@create');
-Route::get('admin/youtube/book/{id}', 'YoutubeController@bookyoutube');
-Route::get('admin/youtube/dpyoutube/{id}', 'YoutubeController@dpyoutube');
 Route::get('admin/youtube/edit/{id}', 'YoutubeController@edit');
 Route::post('admin/youtube/update/{id}', 'YoutubeController@update');
 Route::get('admin/youtube/delete/{id}', 'YoutubeController@destroy');
 Route::post('admin/youtube/store', 'YoutubeController@store');
 
-// });
 
-	
+
+Route::get('event/book', 'EventController@create');
+Route::get('gedung', 'gedungController@index');
+Route::get('kostum', 'KostumController@index');
+Route::get('paket', 'paketController@index');

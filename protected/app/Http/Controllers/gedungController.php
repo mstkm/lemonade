@@ -35,6 +35,13 @@ class gedungController extends Controller
         return view('gedung.create');
     }
 
+
+    public function getAlamat($id)
+    {        
+        $alamat = Gedung::whereid($id)->first();      
+        return $alamat;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -105,6 +112,10 @@ class gedungController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function edit($id)
     {
         $kostum=Kostum::all();

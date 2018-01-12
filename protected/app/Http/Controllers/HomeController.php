@@ -13,6 +13,7 @@ use App\Event;
 use App\Gedung;
 use App\Video;
 use Calendar;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -49,6 +50,9 @@ class HomeController extends Controller
 
     public function index()
     {
+
+
+        if(Auth::guest()){
         $event=Event::all();        
         $yutub=Video::where([['is_top','1'],['is_show','1'],['is_deleted','0']])->first();
         $allyutub=Video::where([['is_top','0'],['is_show','1'],['is_deleted','0']])->get();
@@ -70,11 +74,14 @@ class HomeController extends Controller
             }
         
         $calendar = Calendar::addEvents($events); 
-
-        // return $allyutub;
-       
-
         return view('index',compact('event','calendar','yutub','allyutub'));
+        }
+        elseif(Auth::user()->jenis==='klien'){
+            return view('customer.profile');
+        }
+        elseif(Auth::user()->jenis==='admin'){
+            return redirect('admin');
+        }
     }
     public function event()
     {
