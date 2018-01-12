@@ -24,6 +24,7 @@ class EventController extends Controller
     public function index()
     {
         if(Auth::user()->jenis==='klien'){
+            
             return view('customer.profile');
         }
         elseif(Auth::user()->jenis==='admin'){
@@ -58,9 +59,10 @@ class EventController extends Controller
 
        
         
-        //return $request->all();
+        // return $request->all();
         $name=$request->get('name');
         $status=$request->get('status');
+        $date=$request->get('date');
         $start=$request->get('startevent');
         $end=$request->get('endevent');
         $alamat=$request->get('alamat');
@@ -72,23 +74,34 @@ class EventController extends Controller
         // $klien_id=$request->get('klien_id');
         //$name=$request->get('user_id');
 
+        $startevent=date('Y-m-d H:i',strtotime($start));
+        // return $startevent;
+        $endevent=date('Y-m-d H:i',strtotime($end));
+        
+
         try {
             $new= new Event(array(
                 'name'=>$name,
                 'status'=>$status,
-                'startevent'=>$start,
-                'endevent'=>$end,
+                'startevent'=>$startevent,
+                'endevent'=>$endevent,
                 'alamat'=>$alamat,
-                'gedung'=>"dyandra",
+                //'gedung'=>"dyandra",
                 'gedung_id'=>$gedung_id,
                 'keterangan'=>$keterangan,
                 'paket_id'=>$paket_id,
                 'kostum_id'=>$kostum_id,
-                'klien_id'=>$klien_id,
+                //'klien_id'=>$klien_id,
                 'user_id'=>Auth::user()->id,
                 ));
             $new->save();
+            if(Auth::user()->jenis=='admin'){
             return redirect('admin/event')->with('status', 'Data Berhasil disimpan!!');
+            }
+            elseif(Auth::user()->jenis=='klien')
+            {
+                return redirect('/')->with('status', 'Pesanan anda berhasil terkirim!!');
+            }
           }
           catch (\Exception $e) {
             return back()->withInput()->with('status', $e.'');

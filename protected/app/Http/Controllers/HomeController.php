@@ -77,7 +77,8 @@ class HomeController extends Controller
         return view('index',compact('event','calendar','yutub','allyutub'));
         }
         elseif(Auth::user()->jenis==='klien'){
-            return view('customer.profile');
+            $history=Event::whereUserId(Auth::user()->id)->orderBy('created_at','ASC')->get();
+            return view('customer.profile',compact('history'));
         }
         elseif(Auth::user()->jenis==='admin'){
             return redirect('admin');

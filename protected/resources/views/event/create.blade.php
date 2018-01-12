@@ -40,7 +40,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        @if(auth::user()->jenis=='admin')
                         <div class="form-group">
                             <label for="admin" class="col-md-4 control-label">Status</label>
                             <div class="col-md-6">
@@ -50,8 +50,10 @@
                                         <option value="DP" >Tahap DP</option>
                                 </select> 
                             </div>
-                        </div>                        
-
+                        </div>
+                        @else
+                        <input type="hidden" name="status" value="DP">                        
+                        @endif
                         <div class="form-group">
                             <label for="admin" class="col-md-4 control-label">Gedung</label>
                             <div class="col-md-6">
