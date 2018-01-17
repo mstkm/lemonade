@@ -279,17 +279,17 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
         </div>
       </div> 
-    </div>
+   
     <div class="container-fluid">
       <div class="row">
-        <div class="col-xs-8" style="float: none; margin: 0 auto;">
+    
 
         <div class="container">
 
   		<!-- THE YOUTUBE PLAYER -->
-  		<div class="vid-container">
-		    <iframe id="vid_frame" src="
-        <?php echo str_replace('autoplay=1','autoplay=0',$yutub->url) ?>" frameborder="0" width="100%" height="500"></iframe>
+  		<div class="vid-container embed-responsive embed-responsive-16by9">
+		    <iframe id="vid_frame" class="embed-responsive-item" src="
+        <?php echo str_replace('autoplay=1','autoplay=0',$yutub->url) ?>" frameborder="0" ></iframe>
 		</div>
 
 		<!-- THE PLAYLIST -->
