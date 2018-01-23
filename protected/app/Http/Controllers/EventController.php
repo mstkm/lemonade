@@ -56,10 +56,7 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-
-       
-        
+    {        
         // return $request->all();
         $name=$request->get('name');
         $status=$request->get('status');
@@ -75,10 +72,22 @@ class EventController extends Controller
         // $klien_id=$request->get('klien_id');
         //$name=$request->get('user_id');
         // return $date;
-        $datw=date('Y-m-d',strtotime($date));
+        $date=date('Y-m-d',strtotime($date));
         $startevent=$date.' '.date('H:i',strtotime($start));
         // return $startevent;
         $endevent=$date.' '.date('H:i',strtotime($end));
+
+        $gedung=$request->get('gedung');
+        if($gedung_id=='other')
+        {
+            $gedung= new Gedung(array(
+                'name'=>$gedung,
+                'alamat'=>$alamat
+            ));
+            $gedung->save();
+            $gedung_id=Gedung::max('id');
+        }
+
         
 
         try {
@@ -302,3 +311,4 @@ class EventController extends Controller
 
     }
 }
+

@@ -47,7 +47,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -58,7 +58,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=User::whereId($id)->first();
+        return view('user.edit',compact('user'));
     }
 
     /**

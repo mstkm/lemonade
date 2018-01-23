@@ -38,7 +38,7 @@
 									</div>
 
 							
-                                    <div class="text-center"><a href="#" class="btn btn-primary">Edit Profile</a> | <a href="{{url('event/book')}}" class="btn btn-primary">Book Event</a></div>
+                                    <div class="text-center"><a href="{{url('admin/user/edit/'.auth::user()->id)}}" class="btn btn-primary">Edit Profile</a> | <a href="{{url('event/book')}}" class="btn btn-primary">Book Event</a></div>
 
 								</div>
 								<!-- END PROFILE DETAIL -->
