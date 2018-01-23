@@ -11,6 +11,7 @@
 							<!-- BASIC TABLE -->
 							<div class="panel">
 								<div class="panel-heading">
+                                <h3 class="panel-title">Daftar Paket</h3>
                                 @if (session('status'))
                     <div class="alert alert-success">
                         {{ session('status') }}

@@ -11,6 +11,7 @@
 							<!-- BASIC TABLE -->
 							<div class="panel">
 								<div class="panel-heading">
+                                <h3 class="panel-title">Daftar Kostum</h3>
                                 @if (session('status'))
                     <div class="alert alert-success">
                         {{ session('status') }}
@@ -36,9 +37,9 @@
                       </tr>
               </thead>
               <tbody>
-             <?php $x=0;?>
+             <?php $x = 0; ?>
               @foreach($kostums as $kostum)
-              <?php $x++?>
+              <?php $x++ ?>
                   <tr>
                                 <td>
                                 <?php echo $x; ?>

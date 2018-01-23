@@ -1,23 +1,28 @@
 @extends('layouts.main')
 
-@section('isi')
-<div class="container">
-    <div class="row">
-    @if (session('status'))
+@section('content')
+<div class="main">
+			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="container-fluid">
+					<!-- <h3 class="page-title">Tables</h3> -->
+					<div class="row">
+						<div class="col-md-12">
+							<!-- BASIC TABLE -->
+							<div class="panel">
+								<div class="panel-heading">
+                                <h3 class="panel-title">Daftar Video</h3>
+                                @if (session('status'))
                     <div class="alert alert-success">
                         {{ session('status') }}
                     </div>
                     @endif
     <h3>
-    <a href="{{url('admin/youtube/create')}}" class="btn btn-primary">Add</a>
-    </h3>         
-  
-
-          <!-- general form elements -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Daftar Event</h3>
-            </div>
+    @if(auth::user()->jenis=='admin')
+    <a href="{{url('admin/paket/create')}}" class="btn btn-primary">Add</a>
+    @endif
+    </h3> 
+								</div>
            
               <table id="example1" class="table table-striped table-hover">
               <thead>
@@ -41,8 +46,8 @@
                                 <?php echo $x; ?>
                                 </td>
                                 <td>{{$event->title}}</td>
-                                <td>{{$event->url}}</td>
-                                <td>{{$event->image}}</td>
+                                <td><a href="{{$event->url}}" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> </td>
+                                <td> <img src="{{$event->image}}" alt="" class="rounded" width="60"></td>
                                 <td>{{$event->created_at}}</td>
 
                                 <td>

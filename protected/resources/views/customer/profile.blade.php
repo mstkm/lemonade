@@ -57,34 +57,31 @@
 								<div class="tab-content">
 									<div class="tab-pane fade in active" id="tab-bottom-left1">
 										<ul class="list-unstyled activity-timeline">
-                                            @foreach($history as $item)
+										<?php if(isset($history)) {
+											foreach($history as $item)
+											{?>
 											<li>
 												<i class="fa fa-calendar activity-icon"></i>
                                                 <p>{{$item->name}} @<?php echo date('d-M-Y H:i', strtotime($item->startevent)); ?> <a href="#">Di {{$item->alamat}}</a> 
-                                                <span class="timestamp">{{$item->status}} | <?php echo date('d-M-Y', strtotime($item->created_at)); ?></span></p>
+                                                <span class="timestamp"><span class="label 
+												@if($item->status=='canceled')
+												label-danger
+												@else
+												label-success
+												@endif
+												">{{strtoupper($item->status)}}</span> | <?php echo date('d-M-Y', strtotime($item->created_at)); ?> | </span></p>
                                             </li>
-                                            @endforeach
-<!--                                             
+                                            
+										<?php } 
+										}
+										else {?>
 											<li>
-												<i class="fa fa-cloud-upload activity-icon"></i>
-												<p>Uploaded new file <a href="#">Proposal.docx</a> to project <a href="#">New Year Campaign</a> <span class="timestamp">7 hours ago</span></p>
-											</li>
-											<li>
-												<i class="fa fa-plus activity-icon"></i>
-												<p>Added <a href="#">Martin</a> and <a href="#">3 others colleagues</a> to project repository <span class="timestamp">Yesterday</span></p>
-											</li>
-											<li>
-												<i class="fa fa-check activity-icon"></i>
-												<p>Finished 80% of all <a href="#">assigned tasks</a> <span class="timestamp">1 day ago</span></p>
+												<i class="fa fa-calendar activity-icon"></i>
+                                                <p>TIDAK ADA RIWAYAT BOOKING EVENT
+                                                <span class="timestamp"</span></p>
                                             </li>
-                                            <li>
-												<i class="fa fa-check activity-icon"></i>
-												<p>Finished 80% of all <a href="#">assigned tasks</a> <span class="timestamp">1 day ago</span></p>
-                                            </li>
-                                            <li>
-												<i class="fa fa-check activity-icon"></i>
-												<p>Finished 80% of all <a href="#">assigned tasks</a> <span class="timestamp">1 day ago</span></p>
-											</li> -->
+										<?php } ?>
+
 										</ul>
 										<!-- <div class="margin-top-30 text-center"><a href="#" class="btn btn-default">See all activity</a></div> -->
 									</div>

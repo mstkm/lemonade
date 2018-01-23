@@ -15,7 +15,7 @@ Route::get('/', 'Homecontroller@index');
 
 Auth::routes();
 
-Route::get('admin', 'Eventcontroller@index');
+Route::get('admin', 'EventController@index');
 Route::get('admin/event', 'EventController@index');
 //Route::get('admin/event/{id}', 'EventController@show');
 Route::get('admin/event/create', 'EventController@create');
@@ -77,7 +77,10 @@ Route::get('admin/youtube/delete/{id}', 'YoutubeController@destroy');
 Route::post('admin/youtube/store', 'YoutubeController@store');
 
 
-
+Route::get('terima/{id}', 'EventController@terima');
+Route::get('tolak/{id}', 'EventController@tolak');
+Route::get('dpevent/{id}', 'EventController@dp');
+Route::get('complete/{id}', 'EventController@complete');
 Route::get('event/book', 'EventController@create');
 Route::get('gedung', 'gedungController@index');
 Route::get('kostum', 'KostumController@index');

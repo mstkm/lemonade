@@ -60,7 +60,7 @@ class HomeController extends Controller
         $events = [];     
             foreach ($event as $key => $value) {
             $events[] = Calendar::event(
-                strtoupper($value->name),
+                strtoupper('booked'),
                 false,
                 new \DateTime($value->startevent.''),
                 new \DateTime($value->endevent.''),
@@ -78,6 +78,7 @@ class HomeController extends Controller
         }
         elseif(Auth::user()->jenis==='klien'){
             $history=Event::whereUserId(Auth::user()->id)->orderBy('created_at','ASC')->get();
+            // return $history;
             return view('customer.profile',compact('history'));
         }
         elseif(Auth::user()->jenis==='admin'){

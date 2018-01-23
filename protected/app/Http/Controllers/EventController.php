@@ -24,8 +24,9 @@ class EventController extends Controller
     public function index()
     {
         if(Auth::user()->jenis==='klien'){
-            
-            return view('customer.profile');
+            $history=Event::where([['user_id',Auth::user()->id]])->orderBy('created_at','ASC')->get();
+            // return $history;
+            return view('customer.profile',compact('history'));
         }
         elseif(Auth::user()->jenis==='admin'){
             $events = Event::where('is_deleted','!=','1')->get();
@@ -145,6 +146,74 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function terima($id)
+    {
+        try{
+            $event=Event::whereId($id)->first();
+            // return $event;
+            $event->status='dp';
+            $event->update();
+            return back()->with('status','Sukses');
+
+        }
+        catch(Exception $e)
+        {
+            return back()->with('status','Gagal');
+        }  
+
+    }
+    public function tolak($id)
+    {
+        try{
+            $event=Event::whereId($id)->first();
+            // return $event;
+            $event->status='canceled';
+            $event->update();
+            return back()->with('status','Sukses');
+
+        }
+        catch(Exception $e)
+        {
+            return back()->with('status','Gagal');
+        }  
+
+    }
+
+    public function dp($id)
+    {
+        try{
+            $event=Event::whereId($id)->first();
+            // return $event;
+            $event->status='dp';
+            $event->update();
+            return back()->with('status','Sukses');
+
+        }
+        catch(Exception $e)
+        {
+            return back()->with('status','Gagal');
+        }  
+
+    }
+    public function complete($id)
+    {
+        try{
+            $event=Event::whereId($id)->first();
+            // return $event;
+            $event->status='complete';
+            $event->update();
+            return back()->with('status','Sukses');
+
+        }
+        catch(Exception $e)
+        {
+            return back()->with('status','Gagal');
+        }  
+
+    }
+
+
     public function update(Request $request, $id)
     {
         // return $request->all();
