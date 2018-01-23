@@ -70,7 +70,15 @@
                                                               <a href="" class="btn btn-danger disabled" onClick="return confirm('Anda Yakin?')">Canceled</a> 
                                                               @endif</td>
                                                           <td>
-                                                            <a href="{{url('admin/event/view    /'.$event->id)}}" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> 
+                                                            <!-- <a href="{{url('admin/event/view    /'.$event->id)}}" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a>  -->
+                                                            <a href="{{url('admin/event/'.$event->id.'/add/photo')}}" class="btn btn-default 
+                                                            @if($event->status != "complete")
+                                                            disabled
+                                                            @endif"><span class="glyphicon glyphicon-camera"></span></a> 
+                                                            <a href="{{url('admin/event/'.$event->id.'/add/comment')}}" class="btn btn-success 
+                                                            @if($event->status != "complete")
+                                                            disabled
+                                                            @endif"><span class="glyphicon glyphicon-star"></span></a> 
                                                             <a href="{{url('admin/event/edit/'.$event->id)}}" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a> 
                                                             <a href="{{url('admin/event/delete/'.$event->id)}}" class="btn btn-danger" onClick="return confirm('Yakin hapus pesanan event ini?')" ><span class="glyphicon glyphicon-remove"></span></a> 
                           

@@ -53,7 +53,7 @@ class HomeController extends Controller
 
 
         if(Auth::guest()){
-        $event=Event::all();        
+        $event=Event::where('status','complete')->get();        
         $yutub=Video::where([['is_top','1'],['is_show','1'],['is_deleted','0']])->first();
         $allyutub=Video::where([['is_top','0'],['is_show','1'],['is_deleted','0']])->get();
         //return $event;

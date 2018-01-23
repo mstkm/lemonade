@@ -62,22 +62,7 @@
                                         @foreach($gedung as $item)
                                         <option value="{{$item->id}}" > {{$item->name}}</option>
                                         @endforeach
-                                        <option value="other" > Gedung Tidak Terdaftar</option>
                                 </select> 
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('gedung') ? ' has-error' : '' }}" id="gedung">
-                            <label for="name" class="col-md-4 control-label">Nama Gedung</label>
-
-                            <div class="col-md-6">
-                                <input id="gedung" type="text" class="form-control" name="gedung" value="{{ old('gedung') }}" required autofocus>
-
-                                @if ($errors->has('gedung'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('gedung') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
@@ -186,4 +171,10 @@
         </div>
     </div>
     </div>
+        </div>
+    </div>
+    </div>
+        </div>
+    </div>
+</div>
 @endsection

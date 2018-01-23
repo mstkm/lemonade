@@ -74,16 +74,17 @@ class EventController extends Controller
         $kostum_id=$request->get('kostum_id');
         // $klien_id=$request->get('klien_id');
         //$name=$request->get('user_id');
-
-        $startevent=date('Y-m-d H:i',strtotime($start));
+        // return $date;
+        $datw=date('Y-m-d',strtotime($date));
+        $startevent=$date.' '.date('H:i',strtotime($start));
         // return $startevent;
-        $endevent=date('Y-m-d H:i',strtotime($end));
+        $endevent=$date.' '.date('H:i',strtotime($end));
         
 
         try {
             $new= new Event(array(
                 'name'=>$name,
-                'status'=>$status,
+                'status'=>'review',
                 'startevent'=>$startevent,
                 'endevent'=>$endevent,
                 'alamat'=>$alamat,
@@ -241,6 +242,42 @@ class EventController extends Controller
 
         
     }
+
+    
+
+    public function addPhoto($id)
+    {
+        $event=Event::whereId($id)->first();
+
+        return view('event.addPhoto',compact('event'));
+    }
+
+
+    public function storePhoto(Request $request, $id)
+    {
+        // return $request->all();
+
+        $request->validate([
+            'gambar' => 'required',
+        ]);
+        // return $request->all();
+        try{
+            $event = Event::whereId($id)->first();
+            $file= $request->file('gambar');
+            $filename = uniqid('img_'). '.' . $file->getClientOriginalExtension();
+            $request->file('gambar')->move("images/event/", $filename);            
+            $event->photo = $filename;
+            $event->update();
+            return redirect('admin/event')->with('status', 'Event dengan id '.$event->id.' telah berhasil diubah');
+        }
+        catch(Exception $e )
+        {
+            
+                return back()->withInput()->with('status', $e.'');              
+        }         
+    }
+
+
 
     /**
      * Remove the specified resource from storage.

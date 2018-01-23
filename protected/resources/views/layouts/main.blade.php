@@ -77,8 +77,16 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+		var id = $('#gedung').hide();
         $("#gedung_id").click(function(){
             var id = $('#gedung_id').val();
+
+			if(id=='other')
+			{
+				$('#gedung').show();
+			}
+			else{
+				$('#gedung').hide();
             $.get('{{ url("admin/gedung/getAlamat")}}/'+id, function(data, status){
                if(data['alamat']=='')
                {
@@ -88,7 +96,7 @@
                {
                 $('#alamat').val(data['alamat']);                                                                
                }                
-            });
+            });}
         });
     });
 </script>

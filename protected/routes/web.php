@@ -56,6 +56,16 @@ Route::post('admin/paket/store', 'paketController@store');
 
 
 
+Route::get('admin/user', 'UserController@index');
+//Route::get('admin/user/{id}', 'userController@show');
+Route::get('admin/user/create', 'UserController@create');
+Route::get('admin/user/edit/{id}', 'UserController@edit');
+Route::post('admin/user/update/{id}', 'UserController@update');
+Route::get('admin/user/delete/{id}', 'UerController@destroy');
+Route::post('admin/user/store', 'UserController@store');
+
+
+
 
 Route::post('event/mail/send/bookevent', 
 'MailController@sendBook'
@@ -76,6 +86,10 @@ Route::post('admin/youtube/update/{id}', 'YoutubeController@update');
 Route::get('admin/youtube/delete/{id}', 'YoutubeController@destroy');
 Route::post('admin/youtube/store', 'YoutubeController@store');
 
+
+
+Route::get('admin/event/{id}/add/photo', 'EventController@addPhoto');
+Route::post('admin/event/{id}/store/photo', 'EventController@storePhoto');
 
 Route::get('terima/{id}', 'EventController@terima');
 Route::get('tolak/{id}', 'EventController@tolak');

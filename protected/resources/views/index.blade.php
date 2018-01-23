@@ -146,10 +146,10 @@
         {
           echo 'active';
         }
-      ?>" style="background-image: url({{asset('images/slider/'.$event->photo)}}">
+      ?>" style="background-image: url({{asset('images/event/'.$event->photo)}}">
           <div class="caption">
             <h1 class="animated fadeInLeftBig">{{$event->name}} <span>Lemonade</span></h1>
-            <p class="animated fadeInRightBig">Bootstrap - Responsive Design - Retina Ready - Parallax</p>
+            <p class="animated fadeInRightBig"> <?php echo date('d F Y ', strtotime($event->startevent)); ?> </p>
             <!-- <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Show</a> -->
           </div>
         </div>

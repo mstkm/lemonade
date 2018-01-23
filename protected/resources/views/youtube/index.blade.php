@@ -46,8 +46,8 @@
                                 <?php echo $x; ?>
                                 </td>
                                 <td>{{$event->title}}</td>
-                                <td><a href="{{$event->url}}" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> </td>
-                                <td> <img src="{{$event->image}}" alt="" class="rounded" width="60"></td>
+                                <td><a href="{{$event->url}}" target="_blank" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> </td>
+                                <td> <img src="{{$event->image}}" alt="" class="rounded" width="80"></td>
                                 <td>{{$event->created_at}}</td>
 
                                 <td>

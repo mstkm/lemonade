@@ -8,7 +8,7 @@ class Event extends Model
 {
     protected $table = 'events';
 	protected $primaryKey = 'id';
-    protected $fillable = ['name','status','startevent','endevent','alamat','gedung','gedung_id','keterangan','paket_id','kostum_id','klien_id','user_id'];
+    protected $fillable = ['name','status','startevent','endevent','photo','alamat','gedung','gedung_id','keterangan','paket_id','kostum_id','klien_id','user_id'];
 
     public function User()
     {

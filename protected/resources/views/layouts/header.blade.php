@@ -5,7 +5,7 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="{{url('admin')}}"><img src="{{asset('assets/img/logo-dark.png')}}" alt="Klorofil Logo" class="img-responsive logo"></a>
+				<a href="{{url('admin')}}"><img src="{{asset('images/logo-admin.png')}}" alt="Klorofil Logo" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -41,6 +41,7 @@
 							@if(!auth::guest())
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('assets/img/user.png')}}" class="img-circle" alt="Avatar"> <span>{{auth::user()->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
+							<li><a href="{{url('/admin/user')}}" class="glyphicon glyphicon-user ">  User</a></li>
 
 								<li>
                                         <a href="{{ route('logout') }}"
@@ -54,6 +55,7 @@
                                             {{ csrf_field() }}
                                         </form>
 									</li>
+
 									
 							</ul>
 								@endif
