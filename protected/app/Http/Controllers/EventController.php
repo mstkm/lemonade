@@ -24,7 +24,7 @@ class EventController extends Controller
     public function index()
     {
         if(Auth::user()->jenis==='klien'){
-            $history=Event::where([['user_id',Auth::user()->id]])->orderBy('created_at','ASC')->get();
+            $history=Event::where([['user_id',Auth::user()->id]])->leftjoin('ratings','ratings.event_id','=','events.id')->orderBy('events.created_at','ASC')->get();
             // return $history;
             return view('customer.profile',compact('history'));
         }

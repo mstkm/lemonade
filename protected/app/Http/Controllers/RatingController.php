@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Rating;
 
-class UserController extends Controller
+class RatingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user=User::all();
-        return view('user.index',compact('user'));
+        //
     }
 
     /**
@@ -23,9 +22,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return view('comment.create',compact('id'));
     }
 
     /**
@@ -34,9 +33,22 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+        // return $request->all();
+        try {
+            $new= new Rating(array(
+                'rate'=>$request->rate,
+                'comment'=>$request->comment,
+                'is_show'=>'0',
+                'event_id'=>$id,
+                ));
+            $new->save();
+            return redirect('admin')->with('status', 'Rating Berhasil disimpan!!');
+          }
+          catch (\Exception $e) {
+            return back()->withInput()->with('status', $e.'');
+          }
     }
 
     /**
@@ -47,7 +59,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -58,8 +70,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user=User::whereId($id)->first();
-        return view('user.edit',compact('user'));
+        //
     }
 
     /**
@@ -71,23 +82,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $request->validate([
-            'username'=> 'required',
-            'name'=> 'required',
-            'email'=> 'required|email|unique:users,username',
-            'alamat'=> 'required|string',
-            'phone'=> 'numeric|min:1|required',            
-        ]);
-        // return $request->all();
-        $user =User::whereId($id)->first();
-        $user->name = $request['name'];
-        $user->username = $request['username'];
-        $user->email = $request['email'];
-        $user->alamat = $request['alamat'];
-        $user->noHP = $request['phone'];             
-        $user->update();
-        return redirect('admin')->with('status','Profile Berhasil Diperbarui!!');
         //
     }
 

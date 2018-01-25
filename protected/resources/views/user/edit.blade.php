@@ -47,6 +47,11 @@
                             <label for="admin" class="col-md-4 control-label">Username</label>
                             <div class="col-md-6">
                             <input id="name" type="text" class="form-control" name="username" value="{{ $user->username }}" required autofocus>
+                            @if ($errors->has('username'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
@@ -82,7 +87,7 @@
                             <label for="phone" class="col-md-4 control-label">Phone</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control" name="phone" value="{{$user->phone}}" required autofocus>
+                                <input id="phone" type="text" class="form-control" name="phone" value="{{$user->noHP}}" required autofocus>
 
                                 @if ($errors->has('phone'))
                                     <span class="help-block">

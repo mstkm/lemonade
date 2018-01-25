@@ -99,3 +99,8 @@ Route::get('event/book', 'EventController@create');
 Route::get('gedung', 'gedungController@index');
 Route::get('kostum', 'KostumController@index');
 Route::get('paket', 'paketController@index');
+
+
+
+Route::get('admin/comment/create/{id}', 'RatingController@create');
+Route::post('admin/comment/store/{id}', 'RatingController@store');

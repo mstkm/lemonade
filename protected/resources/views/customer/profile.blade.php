@@ -63,13 +63,22 @@
 											<li>
 												<i class="fa fa-calendar activity-icon"></i>
                                                 <p>{{$item->name}} @<?php echo date('d-M-Y H:i', strtotime($item->startevent)); ?> <a href="#">Di {{$item->alamat}}</a> 
+												@if($item->rate=='')
+												| <a href="{{url('admin/comment/create/'.$item->id )}}" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-comment"></span></a>
+												@else |
+												@for($i=0;$i<$item->rate;$i++)
+												<span class="glyphicon glyphicon-star"></span>
+												@endfor
+												| <span class="glyphicon glyphicon-comment"></span> {{$item->comment}}
+												@endif
+
                                                 <span class="timestamp"><span class="label 
 												@if($item->status=='canceled')
 												label-danger
 												@else
 												label-success
 												@endif
-												">{{strtoupper($item->status)}}</span> | <?php echo date('d-M-Y', strtotime($item->created_at)); ?> | </span></p>
+												">{{strtoupper($item->status)}}</span> | <?php echo date('d-M-Y', strtotime($item->created_at)); ?>  </span></p>
                                             </li>
                                             
 										<?php } 
