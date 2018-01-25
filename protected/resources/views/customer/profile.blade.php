@@ -30,7 +30,7 @@
 									<div class="profile-info">
 										<h4 class="heading">Basic Info</h4>
 										<ul class="list-unstyled list-justify">
-											<li>Birthdate <span>24 Aug, 2016</span></li>
+
 											<li>Mobile <span>{{auth::user()->noHP}}</span></li>
 											<li>Email <span>{{auth::user()->email}}</span></li>
 
