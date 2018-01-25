@@ -62,7 +62,8 @@
 											{?>
 											<li>
 												<i class="fa fa-calendar activity-icon"></i>
-                                                <p>{{$item->name}} @<?php echo date('d-M-Y H:i', strtotime($item->startevent)); ?> <a href="#">Di {{$item->alamat}}</a> 
+												<p>{{$item->name}} @<?php echo date('d-M-Y H:i', strtotime($item->startevent)); ?> 
+												@if($item->status=='complete')
 												@if($item->rate=='')
 												| <a href="{{url('admin/comment/create/'.$item->id )}}" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-comment"></span></a>
 												@else |
@@ -70,6 +71,7 @@
 												<span class="glyphicon glyphicon-star"></span>
 												@endfor
 												| <span class="glyphicon glyphicon-comment"></span> {{$item->comment}}
+												@endif
 												@endif
 
                                                 <span class="timestamp"><span class="label 

@@ -53,8 +53,7 @@
                             <label for="comment" class="col-md-4 control-label">Comment</label>
 
                             <div class="col-md-6">
-                        <textarea name="comment" id="" cols="40"  rows="10">
-                        </textarea>
+                            <textarea class="form-control" name="comment" placeholder="textarea" rows="4"></textarea>
                             </div>
                         </div>
  
