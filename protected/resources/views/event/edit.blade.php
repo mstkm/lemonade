@@ -68,7 +68,7 @@
                             <label for="gedung" class="col-md-4 control-label">Gedung</label>
 
                             <div class="col-md-6">
-                                <input id="gedung" type="text" class="form-control" name="gedung" value="{{ $event->gedung->name }}" required autofocus>
+                                <input  type="text" class="form-control" name="gedung" value="{{ $event->gedung->name }}" required autofocus>
 
                                 @if ($errors->has('gedung'))
                                     <span class="help-block">
