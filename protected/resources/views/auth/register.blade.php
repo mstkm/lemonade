@@ -55,6 +55,7 @@
                                 @endif
                             </div>
                         </div>
+                        
 
                         <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                             <label for="phone" class="col-md-4 control-label">Phone</label>

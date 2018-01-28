@@ -29,7 +29,15 @@ class EventController extends Controller
             return view('customer.profile',compact('history'));
         }
         elseif(Auth::user()->jenis==='admin'){
-            $events = Event::where('is_deleted','!=','1')->get();
+            $events = Event::select('events.id as id','users.name as pemesanname','kostums.name as kname','pakets.name as pname','events.name as name','events.startevent as startevent','events.status as status','ratings.rate as rate','ratings.comment as comment')
+            ->leftjoin('ratings','ratings.event_id','=','events.id')
+            ->join('users','events.user_id','=','users.id')
+            ->join('gedungs','events.user_id','=','gedungs.id')
+            ->join('kostums','events.kostum_id','=','kostums.id')
+            ->join('pakets','events.paket_id','=','pakets.id')
+            ->where('events.is_deleted','!=','1')            
+            ->orderBy('events.created_at','DESC')->get();
+            // return $events;
             return view('event.index', compact('events'));
         }
         
@@ -257,7 +265,7 @@ class EventController extends Controller
     public function addPhoto($id)
     {
         $event=Event::whereId($id)->first();
-
+        return $event;
         return view('event.addPhoto',compact('event'));
     }
 
