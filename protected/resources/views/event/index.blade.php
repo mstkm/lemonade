@@ -89,10 +89,18 @@
                                                             @endif">
                                                 <span class="glyphicon glyphicon-star"></span>
                                             </a>
-                                            <a href="{{url('admin/event/edit/'.$event->id)}}" class="btn btn-sm btn-info">
+                                            <a href="{{url('admin/event/edit/'.$event->id)}}" class="btn btn-sm btn-info
+                                                @if($event->status == "complete")
+                                                disabled
+                                                @endif
+                                                ">
                                                 <span class="glyphicon glyphicon-pencil"></span>
                                             </a>
-                                            <a href="{{url('admin/event/delete/'.$event->id)}}" class="btn btn-sm btn-danger" onClick="return confirm('Yakin hapus pesanan event ini?')">
+                                            <a href="{{url('admin/event/delete/'.$event->id)}}" class="btn btn-sm btn-danger 
+                                                @if($event->status == "complete")
+                                                disabled
+                                                @endif
+                                                " onClick="return confirm('Yakin hapus pesanan event ini?')">
                                                 <span class="glyphicon glyphicon-remove"></span>
                                             </a>
 

@@ -112,10 +112,8 @@ class KostumController extends Controller
      */
     public function edit($id)
     {
-        $kostum=Kostum::all();
-        $paket=Paket::all();
-        $kostum = kostum::whereId($id)->firstOrFail();
-        return view('kostum.edit', ['kostum' => $kostum], compact('kostum'), compact('paket'));
+        $event = kostum::whereId($id)->firstOrFail();
+        return view('kostum.edit',  compact('event'));
     }
 
     /**
@@ -131,15 +129,9 @@ class KostumController extends Controller
         try{
             $kostum = kostum::whereId($id)->firstOrFail();
             $kostum->name = $request->get('name');
-            $kostum->status = $request->get('status');
-            $kostum->alamat = $request->get('alamat');
-            $kostum->startkostum = $request->get('startkostum');
-            $kostum->endkostum = $request->get('endkostum');
-            // $kostum->paket_id = $request->get('paket_id');
-            // $kostum->kostum_id = $request->get('kostum_id');
             $kostum->keterangan = $request->get('keterangan');
-            $kostum->save();
-            return redirect('admin/kostum')->with('status', 'kostum dengan id '.$kostum->id.' telah berhasil diubah');
+            $kostum->update();
+            return redirect('admin/kostum')->with('status', 'kostum '.strtoupper($kostum->name).' telah berhasil diubah');
 
         }
         catch(Exception $e )

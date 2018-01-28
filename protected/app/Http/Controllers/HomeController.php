@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Rating;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\view;
 use App\Kostum;
@@ -72,9 +73,9 @@ class HomeController extends Controller
             ]
             );
             }
-        
+        $avgStar = Rating::avg('rate');
         $calendar = Calendar::addEvents($events); 
-        return view('index',compact('event','calendar','yutub','allyutub'));
+        return view('index',compact('event','calendar','yutub','allyutub','avgStar'));
         }
         elseif(Auth::user()->jenis==='klien'){
             $history=Event::whereUserId(Auth::user()->id)->orderBy('created_at','ASC')->get();

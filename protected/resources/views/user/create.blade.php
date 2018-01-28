@@ -23,7 +23,7 @@
           <div class="box box-primary">
             <div class="box-header with-border">
             <div class="panel-heading">
-									<h3 class="panel-title">Tambah Event</h3>
+									<h3 class="panel-title">Tambah User</h3>
 								</div>
               <form class="form-horizontal" method="POST" action="{{ url('admin/event/store') }}">
                         {{ csrf_field() }}

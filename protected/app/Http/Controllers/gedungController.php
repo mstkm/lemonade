@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Gedung;
 use App\Paket;
 use App\Kostum;
-
+use Auth;
 
 
 class gedungController extends Controller
@@ -116,12 +116,11 @@ class gedungController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function edit($id)
     {
-        $kostum=Kostum::all();
-        $paket=Paket::all();
         $gedung = gedung::whereId($id)->firstOrFail();
-        return view('gedung.edit', ['gedung' => $gedung], compact('kostum'), compact('paket'));
+        return view('gedung.edit',  compact('gedung'));
     }
 
     /**
@@ -137,14 +136,10 @@ class gedungController extends Controller
         try{
             $gedung = gedung::whereId($id)->firstOrFail();
             $gedung->name = $request->get('name');
-            $gedung->status = $request->get('status');
+
             $gedung->alamat = $request->get('alamat');
-            $gedung->startgedung = $request->get('startgedung');
-            $gedung->endgedung = $request->get('endgedung');
-            // $gedung->paket_id = $request->get('paket_id');
-            // $gedung->kostum_id = $request->get('kostum_id');
             $gedung->keterangan = $request->get('keterangan');
-            $gedung->save();
+            $gedung->update();
             return redirect('admin/gedung')->with('status', 'gedung dengan id '.$gedung->id.' telah berhasil diubah');
 
         }

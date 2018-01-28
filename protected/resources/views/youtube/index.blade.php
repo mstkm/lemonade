@@ -19,7 +19,7 @@
                     @endif
     <h3>
     @if(auth::user()->jenis=='admin')
-    <a href="{{url('admin/paket/create')}}" class="btn btn-primary">Add</a>
+    <a href="{{url('admin/youtube/create')}}" class="btn btn-primary">Add</a>
     @endif
     </h3> 
 								</div>
@@ -33,7 +33,8 @@
 
                   <th>Gambar</th>
                   <th>Tgl Upload</th>
-
+                  <th>Ditampilkan</th>
+                  <th>is_top</th>
                   <th>Opsi</th>
                       </tr>
               </thead>
@@ -49,11 +50,25 @@
                                 <td><a href="{{$event->url}}" target="_blank" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> </td>
                                 <td> <img src="{{$event->image}}" alt="" class="rounded" width="80"></td>
                                 <td>{{$event->created_at}}</td>
+                                <td>
+                                    @if($event->is_show=='0')
+                                    <a href="{{url('admin/youtube/'.$event->id.'/show')}}" class="btn btn-sm btn-success">TAMPILAN</a> 
+                                    @else
+                                    <a href="{{url('admin/youtube/'.$event->id.'/hide')}}" class="btn btn-sm btn-danger">SEMBUNYIKAN</a> 
+                                    @endif
 
+                                </td>
+                                <td>
+                                        @if($event->is_top=='0')
+                                        <a href="{{url('admin/youtube/'.$event->id.'/big')}}" class="btn btn-sm btn-success">SET BIG</a> 
+                                        @else
+                                        <a href="{{url('admin/youtube/'.$event->id.'/big')}}" class="btn btn-sm btn-danger">SET MINI</a> 
+                                        @endif
+                                </td>
                                 <td>
                                    
-                                    <a href="{{url('admin/event/edit/'.$event->id)}}" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a> 
-                                    <a href="{{url('admin/event/delete/'.$event->id)}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a> 
+                                    <!-- <a href="{{url('admin/youtube/edit/'.$event->id)}}" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a>  -->
+                                    <a href="{{url('admin/youtube/delete/'.$event->id)}}" onClick="return confirm('Anda Yakin?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a> 
 
 
                                 </td>

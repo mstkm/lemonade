@@ -2,20 +2,29 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-    <h3>
-    <!-- <a href="{{url('admin/Kostum/create')}}" class="btn btn-primary">Add</a> -->
-    </h3>         
-  
-    @if (session('status'))
-                    <div class="alert alert-danger">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-          <!-- general form elements -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Tambah Kostum</h3>
+        <div class="row">
+        <h3>
+        <!-- <a href="{{url('admin/event/create')}}" class="btn btn-primary">Add</a> -->
+        </h3>     	<div class="main">
+                <!-- MAIN CONTENT -->
+                <div class="main-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- BUTTONS -->
+                                <div class="panel">    
+      
+        @if (session('status'))
+                        <div class="alert alert-danger">
+                            {{ session('status') }}
+                        </div>
+                        @endif
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                <div class="panel-heading">
+                                        <h3 class="panel-title">Tambah Kostum</h3>
+                                    </div>
               <form class="form-horizontal" method="POST" action="{{ url('admin/kostum/store') }}">
                         {{ csrf_field() }}
           <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

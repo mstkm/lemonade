@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Paket;
 use App\Kostum;
 use App\Gedung;
+use Auth;
 
 class PaketController extends Controller
 {
@@ -54,32 +55,17 @@ class PaketController extends Controller
         
         //return $request->all();
         $name=$request->get('name');
-        $status=$request->get('status');
-        $start=$request->get('startpaket');
-        $end=$request->get('endpaket');
-        $alamat=$request->get('alamat');
-        $gedung_id=$request->get('gedung_id');
+        $harga=$request->get('harga');
         $keterangan=$request->get('keterangan');
-        $paket_id=$request->get('paket_id');
-        $klien_id='1';
-        $kostum_id=$request->get('kostum_id');
+       
         // $klien_id=$request->get('klien_id');
         //$name=$request->get('user_id');
 
         try {
             $new= new paket(array(
                 'name'=>$name,
-                'status'=>$status,
-                'startpaket'=>$start,
-                'endpaket'=>$end,
-                'alamat'=>$alamat,
-                'gedung'=>"dyandra",
-                'gedung_id'=>$gedung_id,
-                'keterangan'=>$keterangan,
-                'paket_id'=>$paket_id,
-                'kostum_id'=>$kostum_id,
-                'klien_id'=>$klien_id,
-                'user_id'=>Auth::user()->id,
+                'harga'=>$harga,
+                'keterangan'=>$keterangan
                 ));
             $new->save();
             return redirect('admin/paket')->with('status', 'Data Berhasil disimpan!!');
@@ -113,10 +99,9 @@ class PaketController extends Controller
      */
     public function edit($id)
     {
-        $kostum=Kostum::all();
-        $paket=Paket::all();
-        $paket = paket::whereId($id)->firstOrFail();
-        return view('paket.edit', ['paket' => $paket], compact('kostum'), compact('paket'));
+        $event=Paket::whereid($id)->first();
+
+        return view('paket.edit', compact('event'));
     }
 
     /**
@@ -132,15 +117,11 @@ class PaketController extends Controller
         try{
             $paket = paket::whereId($id)->firstOrFail();
             $paket->name = $request->get('name');
-            $paket->status = $request->get('status');
-            $paket->alamat = $request->get('alamat');
-            $paket->startpaket = $request->get('startpaket');
-            $paket->endpaket = $request->get('endpaket');
-            // $paket->paket_id = $request->get('paket_id');
-            // $paket->kostum_id = $request->get('kostum_id');
+            $paket->harga = $request->get('harga');
             $paket->keterangan = $request->get('keterangan');
+
             $paket->save();
-            return redirect('admin/paket')->with('status', 'paket dengan id '.$paket->id.' telah berhasil diubah');
+            return redirect('admin/paket')->with('status', 'paket  '.strtoupper($paket->name).' telah berhasil diubah');
 
         }
         catch(Exception $e )

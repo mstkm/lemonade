@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Video;
+use DB;
 
 class YoutubeController extends Controller
 {
@@ -17,11 +18,11 @@ class YoutubeController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
-        $yutub=Video::all();
-        return view('youtube.index',compact('yutub'));
+        $yutub = Video::where('is_deleted', '0')->get();
+        return view('youtube.index', compact('yutub'));
     }
 
     /**
@@ -34,6 +35,30 @@ class YoutubeController extends Controller
         return view('youtube.create');
     }
 
+
+
+    public function showHide($id, $status)
+    {
+        $video = Video::whereId($id)->first();
+        if ($status == 'show') {
+            $video->is_show = '1';
+        } elseif ($status == 'hide') {
+            if ($video->is_top == '1') {
+                return back()->with('status', 'tidak bisa menyembunyikan video dengan status BIG!!');
+            } else {
+                $video->is_show = '0';
+            }
+        } elseif ($status == 'big') {
+            $affected = DB::table('videos')->update(array('is_top' => '0'));
+            $video->is_top = '1';
+        }
+
+        $video->update();
+        return back()->with('status', 'Data berhasil diperbarui!!');
+    }
+
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -43,45 +68,44 @@ class YoutubeController extends Controller
     public function store(Request $request)
     {
         // return $request->all();
-        $yutubapi='AIzaSyDCTXkgvgL8VLge52xJHymQihk3pylmdKw';
-        $yutuburl=$request['link'];
+        $yutubapi = 'AIzaSyDCTXkgvgL8VLge52xJHymQihk3pylmdKw';
+        $yutuburl = $request['link'];
 
-        $i=0;
-        for($i=0;$i<sizeof($yutuburl);$i++)
-        {
+        $i = 0;
+        for ($i = 0; $i < sizeof($yutuburl); $i++) {
             //echo $yutuburl[$i].'<br>';
    
         //$url = "https://www.youtube.com/watch?v=HEuLclDVZZI&t=257s";
-   parse_str( parse_url( $yutuburl[$i], PHP_URL_QUERY ), $my_array_of_vars );
+            parse_str(parse_url($yutuburl[$i], PHP_URL_QUERY), $my_array_of_vars);
    //echo '<br>'.$my_array_of_vars['v'].'<br>';  
 
-        $videoTitle = file_get_contents("https://www.googleapis.com/youtube/v3/videos?id=".$my_array_of_vars['v']."&key=".$yutubapi."&fields=items(id,snippet(title),statistics)&part=snippet,statistics");
+            $videoTitle = file_get_contents("https://www.googleapis.com/youtube/v3/videos?id=" . $my_array_of_vars['v'] . "&key=" . $yutubapi . "&fields=items(id,snippet(title),statistics)&part=snippet,statistics");
         // despite @ suppress, it will be false if it fails
-       
-        $json = json_decode($videoTitle, true);
-        
-        $title= $json['items'][0]['snippet']['title'];
+
+            $json = json_decode($videoTitle, true);
+
+            $title = $json['items'][0]['snippet']['title'];
        //  echo $json['items'][0]['snippet']['id'];
-       
-   
-       $url='http://youtube.com/embed/'.$my_array_of_vars['v'].'?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1';
-     $img= 'https://img.youtube.com/vi/'.$my_array_of_vars['v'].'/0.jpg';
-       
 
-                $tambah = new Video();
-                $tambah->title = $title;
+
+            $url = 'http://youtube.com/embed/' . $my_array_of_vars['v'] . '?autoplay=1&amp;rel=0&amp;showinfo=0&amp;autohide=1';
+            $img = 'https://img.youtube.com/vi/' . $my_array_of_vars['v'] . '/0.jpg';
+
+
+            $tambah = new Video();
+            $tambah->title = $title;
                 //Judul kita jadikan slug
-                $tambah->url = $url;
-                $tambah->image = $img;
-                $tambah->description = '-';
-                $tambah->is_show = '1';
-                $tambah->is_top = '0';
-        
-                $tambah->save();
+            $tambah->url = $url;
+            $tambah->image = $img;
+            $tambah->description = '-';
+            $tambah->is_show = '1';
+            $tambah->is_top = '0';
 
-    }
+            $tambah->save();
 
-    return redirect('admin/youtube');
+        }
+
+        return redirect('admin/youtube');
     }
 
     /**
@@ -126,6 +150,10 @@ class YoutubeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $video = Video::whereId($id)->first();
+        $video->is_deleted = '1';
+        $video->update();
+
+        return back()->with('status', 'data berhasil dihapus!!');
     }
 }

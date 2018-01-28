@@ -50,7 +50,7 @@
                                                           <td>{{$item->noHP}}</td>                                                                                                           
                                                           <td>
                                                             <a href="{{url('admin/user/edit/'.$item->id)}}" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a> 
-                                                            <a href="{{url('admin/user/delete/'.$item->id)}}" class="btn btn-danger" onClick="return confirm('Yakin hapus pesanan item ini?')" ><span class="glyphicon glyphicon-remove"></span></a>                        
+                                                            <a href="{{url('admin/user/delete/'.$item->id)}}" onClick="return confirm('Anda Yakin??')" class="btn btn-danger" onClick="return confirm('Yakin hapus pesanan item ini?')" ><span class="glyphicon glyphicon-remove"></span></a>                        
                           
                                                           </td>
                                             </tr>

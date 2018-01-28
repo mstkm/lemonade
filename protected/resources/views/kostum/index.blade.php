@@ -51,7 +51,7 @@
                                 <td>
                                    
                                     <a href="{{url('admin/kostum/edit/'.$kostum->id)}}" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a> 
-                                    <a href="{{url('admin/kostum/delete/'.$kostum->id)}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a> 
+                                    <a href="{{url('admin/kostum/delete/'.$kostum->id)}}" class="btn btn-danger" onClick="return confirm('Anda Yakin??')"><span class="glyphicon glyphicon-remove"></span></a> 
 
 
                                 </td>

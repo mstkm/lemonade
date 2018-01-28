@@ -88,6 +88,10 @@ Route::post('admin/youtube/store', 'YoutubeController@store');
 
 
 
+Route::get('admin/youtube/{id}/{status}', 'YoutubeController@showHide');
+
+
+
 Route::get('admin/event/{id}/add/photo', 'EventController@addPhoto');
 Route::post('admin/event/{id}/store/photo', 'EventController@storePhoto');
 
