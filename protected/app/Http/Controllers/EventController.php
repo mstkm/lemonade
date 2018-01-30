@@ -265,7 +265,7 @@ class EventController extends Controller
     public function addPhoto($id)
     {
         $event=Event::whereId($id)->first();
-        return $event;
+        // return $event;
         return view('event.addPhoto',compact('event'));
     }
 
