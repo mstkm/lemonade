@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class UserController extends Controller
 {
@@ -14,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user=User::all();
+        $user=User::where([['id','!=',Auth::user()->id],['is_deleted','0']])->get();
         return view('user.index',compact('user'));
     }
 
@@ -99,6 +100,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user=User::whereId($id)->first();
+        $user->is_deleted='1';
+        $user->update();
+        return back()->with('status','User berhasil dihapus!!');
     }
 }

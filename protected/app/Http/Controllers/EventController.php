@@ -20,7 +20,7 @@ class EventController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         if(Auth::user()->jenis==='klien'){
@@ -29,18 +29,19 @@ class EventController extends Controller
             return view('customer.profile',compact('history'));
         }
         elseif(Auth::user()->jenis==='admin'){
-            $events = Event::select('events.id as id','users.name as pemesanname','kostums.name as kname','pakets.name as pname','events.name as name','events.startevent as startevent','events.status as status','ratings.rate as rate','ratings.comment as comment')
+            $events = Event::
+            select('ratings.is_show as is_show','events.id as id','users.name as pemesanname','kostums.name as kname','pakets.name as pname','events.name as name','events.startevent as startevent','events.status as status','ratings.rate as rate','ratings.comment as comment')
             ->leftjoin('ratings','ratings.event_id','=','events.id')
             ->join('users','events.user_id','=','users.id')
             ->join('gedungs','events.user_id','=','gedungs.id')
             ->join('kostums','events.kostum_id','=','kostums.id')
             ->join('pakets','events.paket_id','=','pakets.id')
-            ->where('events.is_deleted','!=','1')            
+            ->where('events.is_deleted','!=','1')
             ->orderBy('events.created_at','DESC')->get();
             // return $events;
             return view('event.index', compact('events'));
         }
-        
+
     }
 
     /**
@@ -64,7 +65,7 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
+    {
         // return $request->all();
         $name=$request->get('name');
         $status=$request->get('status');
@@ -96,7 +97,7 @@ class EventController extends Controller
             $gedung_id=Gedung::max('id');
         }
 
-        
+
 
         try {
             $new= new Event(array(
@@ -125,11 +126,11 @@ class EventController extends Controller
           catch (\Exception $e) {
             return back()->withInput()->with('status', $e.'');
           }
-      
+
 
         // $event->startevent = $request->get('startevent');
 
-        
+
     }
 
     /**
@@ -178,7 +179,7 @@ class EventController extends Controller
         catch(Exception $e)
         {
             return back()->with('status','Gagal');
-        }  
+        }
 
     }
     public function tolak($id)
@@ -194,7 +195,7 @@ class EventController extends Controller
         catch(Exception $e)
         {
             return back()->with('status','Gagal');
-        }  
+        }
 
     }
 
@@ -211,7 +212,7 @@ class EventController extends Controller
         catch(Exception $e)
         {
             return back()->with('status','Gagal');
-        }  
+        }
 
     }
     public function complete($id)
@@ -227,7 +228,7 @@ class EventController extends Controller
         catch(Exception $e)
         {
             return back()->with('status','Gagal');
-        }  
+        }
 
     }
 
@@ -251,16 +252,16 @@ class EventController extends Controller
         }
         catch(Exception $e )
         {
-            
-                return back()->withInput()->with('status', $e.'');
-              
-        }
-        
 
-        
+                return back()->withInput()->with('status', $e.'');
+
+        }
+
+
+
     }
 
-    
+
 
     public function addPhoto($id)
     {
@@ -282,16 +283,16 @@ class EventController extends Controller
             $event = Event::whereId($id)->first();
             $file= $request->file('gambar');
             $filename = uniqid('img_'). '.' . $file->getClientOriginalExtension();
-            $request->file('gambar')->move("images/event/", $filename);            
+            $request->file('gambar')->move("images/event/", $filename);
             $event->photo = $filename;
             $event->update();
             return redirect('admin/event')->with('status', 'Event dengan id '.$event->id.' telah berhasil diubah');
         }
         catch(Exception $e )
         {
-            
-                return back()->withInput()->with('status', $e.'');              
-        }         
+
+                return back()->withInput()->with('status', $e.'');
+        }
     }
 
 
@@ -315,7 +316,7 @@ class EventController extends Controller
         catch(Exception $e)
         {
             return back()->with('status','Gagal Hapus');
-        }  
+        }
 
     }
 }

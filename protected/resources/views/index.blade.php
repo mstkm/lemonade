@@ -173,9 +173,17 @@
 
 
       <div id="floating-button">
+
+        @if(auth::check())
+        <a href="{{url('admin/')}}">
+          <h4 class="text-center" id="login">Book Event</h4>
+        </a>
+
+        @else
         <a href="{{url('login')}}">
           <h4 class="text-center" id="login">LOGIN</h4>
         </a>
+        @endif
 
       </div>
       <div class="main-nav" style="background-color:#fcfcbc;">
@@ -257,11 +265,11 @@
           <div class="about-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
             <h2>Lemonade Band</h2>
             <p>
-                Lemonade Band merupakan band entertainment Surabaya yang telah melayani banyak event seperti acara pernikahan, acara gathering, sweet 17th, dll. 
-                <p>    Kami memberikan penampilan terbaik dan entertainment yang berbeda. 
+                Lemonade Band merupakan band entertainment Surabaya yang telah melayani banyak event seperti acara pernikahan, acara gathering, sweet 17th, dll.
+                <p>    Kami memberikan penampilan terbaik dan entertainment yang berbeda.
                     <p>banyak tersedia paket yang kami tawarkan untuk memeriahkan acara anda. Happy Customer</p>
-            
-              <h2 class="text-center">  Rating : 
+
+              <h2 class="text-center">  Rating :
                 <?php echo number_format((float)$avgStar, 2, '.', '');  ?>
               </h2>
           </div>
@@ -332,7 +340,106 @@
     </div>
   </section>
   <!--/#portfolio-->
+  <section class="three">
 
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      {{--  <ol class="carousel-indicators" style="color:black">
+        <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+      <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+      <li data-target="#myCarousel" data-slide-to="3" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="4" class=""></li>
+      </ol>  --}}
+
+      <!-- Wrapper for slides -->
+
+
+
+      <div class="carousel-inner">
+        <?php $x=0; ?>
+        @for($i=$x;$i<sizeof($rate);$i++)
+
+        @if($x<sizeof($rate))
+        <div class="item
+        @if($x==0)
+        active
+        @endif
+
+        " >
+          <div style="margin:0px 30%;">
+           <div class=" col-md-5">
+            <div class="card text-center well well-lg" >
+              <div class="card-body">
+                @for($j=0;$j<$rate[$x]->rate;$j++)
+                <span class="glyphicon glyphicon-star"></span>
+                @endfor
+
+                <p class="card-text">{{$rate[$x]->comment}}.</p>
+
+                <?php $x++ ?>
+
+              </div>
+            </div>
+           </div>
+           @endif
+
+           @if($x<sizeof($rate))
+
+           <div class=" col-md-5">
+            <div class="card text-center  well well-lg" >
+              <div class="card-body">
+                @for($k=0;$k<$rate[$x]->rate;$k++)
+                <span class="glyphicon glyphicon-star"></span>
+                @endfor
+                <p class="  -text">{{$rate[$x]->comment}}.</p>
+                <?php $x++ ?>
+              </div>
+            </div>
+           </div>
+           @endif
+
+         </div>
+
+         @endfor
+         </div>
+
+
+
+
+
+
+
+
+
+     <style media="screen">
+    .carousel-control.left, .carousel-control.right {
+     background-image: none;
+     color:grey
+    }
+    .carousel-indicators{
+      color:black
+    }
+    </style>
+
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+
+      </a>
+
+    </div>
+
+</div>
+
+
+
+
+
+</section>
   <section id="contact">
 
     <div id="contact-us" class="parallax text-center">

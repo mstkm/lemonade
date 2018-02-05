@@ -27,6 +27,17 @@ class RatingController extends Controller
         return view('comment.create',compact('id'));
     }
 
+
+    public function IsShow($id,$status)
+    {
+        $rating=Rating::where('event_id',$id)->first();
+        // return $rating;
+        $rating->is_show=$status;
+        $rating->update();
+
+        return back()->with('status','Data berhasil diperbatui!!');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

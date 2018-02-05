@@ -32,9 +32,9 @@
                                         <th>Keterangan</th>
                                         <th>Paket</th>
                                         <th>Kostum</th>
-                                        
-                                        
+
                                         <th>Comment</th>
+                                        <th>Comment_show</th>
                                         <th>Rate</th>
                                         <th>Status</th>
                                         <th>Opsi</th>
@@ -54,8 +54,17 @@
 
                                         <td>{{$event->keterangan}}</td>
                                         <td>{{$event->pname}}</td>
-                                        <td>{{$event->kname}}</td>                                        
-                                        <td>{{$event->commet}}</td>
+                                        <td>{{$event->kname}}</td>
+                                        <td>{{$event->comment}}</td>
+                                        <td>
+                                            @if($event->status == 'complete')
+                                        @if($event->is_show == 1)
+                                            <a href="{{url('comment/show/'.$event->id.'/0')}}" class="btn btn-sm btn-success" onClick="return confirm('Anda Yakin?')">Sembunyi</a>
+                                            @else
+                                            <a href="{{url('comment/show/'.$event->id.'/1')}}" class="btn btn-sm btn-danger" onClick="return confirm('Anda Yakin?')">Tampil</a>
+                                            @endif
+                                            @endif
+                                        </td>
                                         <td>
                                             @if($event->rate=='')
                                             -
@@ -79,12 +88,12 @@
                                             <!-- <a href="{{url('admin/event/view/'.$event->id)}}" class="btn btn-sm btn-primary">
                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                             </a> -->
-                                            <a href="{{url('admin/event/'.$event->id.'/add/photo')}}" class="btn btn-sm btn-default 
+                                            <a href="{{url('admin/event/'.$event->id.'/add/photo')}}" class="btn btn-sm btn-default
                                                             @if($event->status != "complete")
                                                             disabled
-                                                            @endif"><span class="glyphicon glyphicon-camera"></span></a> 
-                                            <a href="{{url('admin/event/'.$event->id.'/add/comment')}}" class="btn btn-sm btn-success 
-                                                            @if($event->status != " complete ")
+                                                            @endif"><span class="glyphicon glyphicon-camera"></span></a>
+                                            <a href="{{url('admin/comment/create/'.$event->id)}}" class="btn btn-sm btn-success
+                                                            @if($event->status != 'complete')
                                                             disabled
                                                             @endif">
                                                 <span class="glyphicon glyphicon-star"></span>
@@ -96,7 +105,7 @@
                                                 ">
                                                 <span class="glyphicon glyphicon-pencil"></span>
                                             </a>
-                                            <a href="{{url('admin/event/delete/'.$event->id)}}" class="btn btn-sm btn-danger 
+                                            <a href="{{url('admin/event/delete/'.$event->id)}}" class="btn btn-sm btn-danger
                                                 @if($event->status == "complete")
                                                 disabled
                                                 @endif

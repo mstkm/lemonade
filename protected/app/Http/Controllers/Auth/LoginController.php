@@ -28,7 +28,7 @@ class LoginController extends Controller
      */
     // if(Auth::user()->jenis=='admin')
     // {
-    protected $redirectTo = 'admin';
+    protected $redirectTo = '/';
     // }
     // else{
     //     protected $redirectTo = '/';

@@ -61,20 +61,20 @@ Route::get('admin/user', 'UserController@index');
 Route::get('admin/user/create', 'UserController@create');
 Route::get('admin/user/edit/{id}', 'UserController@edit');
 Route::post('admin/user/update/{id}', 'UserController@update');
-Route::get('admin/user/delete/{id}', 'UerController@destroy');
+Route::get('admin/user/delete/{id}', 'UserController@destroy');
 Route::post('admin/user/store', 'UserController@store');
 
 
 
 
-Route::post('event/mail/send/bookevent', 
+Route::post('event/mail/send/bookevent',
 'MailController@sendBook'
 // function(){
 //     return new App\Mail\bookEventMail;
 // }
 );
 
-Route::get('event/mail/read/bookevent', 
+Route::get('event/mail/read/bookevent',
 'MailController@index'
 );
 
@@ -107,4 +107,5 @@ Route::get('paket', 'paketController@index');
 
 
 Route::get('admin/comment/create/{id}', 'RatingController@create');
+Route::get('comment/show/{id}/{status}', 'RatingController@IsShow');
 Route::post('admin/comment/store/{id}', 'RatingController@store');

@@ -42,7 +42,7 @@ class HomeController extends Controller
     //     // despite @ suppress, it will be false if it fails
     //     if ($videoTitle) {
     //     $json = json_decode($videoTitle, true);
-        
+
     //     return $json['items'][0]['snippet']['title'];
     //     } else {
     //     return false;
@@ -53,36 +53,36 @@ class HomeController extends Controller
     {
 
 
-        if(Auth::guest()){
-        $event=Event::where('status','complete')->get();        
-        $yutub=Video::where([['is_top','1'],['is_show','1'],['is_deleted','0']])->first();
-        $allyutub=Video::where([['is_top','0'],['is_show','1'],['is_deleted','0']])->get();
+        if (Auth::guest()|| Auth::user()->jenis=='klien') {
+            $event = Event::where('status', 'complete')->get();
+            $yutub = Video::where([['is_top', '1'], ['is_show', '1'], ['is_deleted', '0']])->first();
+            $allyutub = Video::where([['is_top', '0'], ['is_show', '1'], ['is_deleted', '0']])->get();
         //return $event;
-        $events = [];     
+            $events = [];
             foreach ($event as $key => $value) {
-            $events[] = Calendar::event(
-                strtoupper('booked'),
-                false,
-                new \DateTime($value->startevent.''),
-                new \DateTime($value->endevent.''),
-                $value->id, 
+                $events[] = Calendar::event(
+                    strtoupper('booked'),
+                    false,
+                    new \DateTime($value->startevent . ''),
+                    new \DateTime($value->endevent . ''),
+                    $value->id,
                 //optional event ID
-            [
-                'url' => ''.$value->id,
+                    [
+                        'url' => '' . $value->id,
                 //any other full-calendar supported parameters
-            ]
-            );
+                    ]
+                );
             }
-        $avgStar = Rating::avg('rate');
-        $calendar = Calendar::addEvents($events); 
-        return view('index',compact('event','calendar','yutub','allyutub','avgStar'));
-        }
-        elseif(Auth::user()->jenis==='klien'){
-            $history=Event::whereUserId(Auth::user()->id)->orderBy('created_at','ASC')->get();
+            $avgStar = Rating::avg('rate');
+            $calendar = Calendar::addEvents($events);
+            $rate = Rating::where('is_show','1')->get();
+            // dd($rate);
+            return view('index', compact('event', 'calendar', 'yutub', 'allyutub', 'avgStar','rate'));
+        } elseif (Auth::user()->jenis === 'klien') {
+            $history = Event::whereUserId(Auth::user()->id)->orderBy('created_at', 'ASC')->get();
             // return $history;
-            return view('customer.profile',compact('history'));
-        }
-        elseif(Auth::user()->jenis==='admin'){
+            return view('customer.profile', compact('history'));
+        } elseif (Auth::user()->jenis === 'admin') {
             return redirect('admin');
         }
     }
@@ -95,10 +95,10 @@ class HomeController extends Controller
     public function tambahevent()
     {
         //$events = Event::all();
-        $kostum=Kostum::all();
-        $paket=Paket::all();
-        $gedung=Gedung::all();
-        return view('tambahevent', compact('kostum','paket','gedung'));
+        $kostum = Kostum::all();
+        $paket = Paket::all();
+        $gedung = Gedung::all();
+        return view('tambahevent', compact('kostum', 'paket', 'gedung'));
     }
 
     public function tambahpaket()
@@ -120,21 +120,21 @@ class HomeController extends Controller
     {
         $kostums = Kostum::all();
         return view('kostum.mainkostum', compact('kostums'));
-        
+
     }
 
     public function indexpaket()
     {
-        $paket=Paket::all();
+        $paket = Paket::all();
         return view('paket.index', compact('paket'));
     }
 
     public function updateevent()
     {
-        $kostum=Kostum::all();
-        $paket=Paket::all();
+        $kostum = Kostum::all();
+        $paket = Paket::all();
         return view('event.updateevent', compact('kostum'), compact('paket'));
-        
+
     }
 
     public function bookevent($id)
@@ -167,7 +167,7 @@ class HomeController extends Controller
     public function hapuspaket($id)
     {
         $event = Paket::where('id', '=', $id)->first();
-        
+
         $event->delete();
 
         return redirect('/indexpaket')->with('status', 'Paket Berhasil Dihapus');
