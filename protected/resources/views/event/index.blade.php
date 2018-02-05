@@ -52,10 +52,10 @@
 
                                         <td>{{$event->startevent}}</td>
 
-                                        <td>{{$event->keterangan}}</td>
+                                        <td>{!!substr($event->keterangan,0,16)!!}..</td>
                                         <td>{{$event->pname}}</td>
                                         <td>{{$event->kname}}</td>
-                                        <td>{{$event->comment}}</td>
+                                        <td>{!!substr($event->comment,0,16)!!}..</td>
                                         <td>
                                             @if($event->status == 'complete')
                                         @if($event->is_show == 1)
