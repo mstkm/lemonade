@@ -49,8 +49,8 @@ class MailController extends Controller
     
             Mail::send('mails.bookEvent',$content,function($messsage) use ($content)
             {
-                $messsage->from('mstkmproject@gmail.com','MSTKM');
-                $messsage->to('mustakimixii@gmail.com');
+                $messsage->from('reyproject@gmail.com','REY');
+                $messsage->to('reybass.liem@gmail.com');
                 $messsage->subject('MSTKM');
                 $messsage->subject($content['body']);
 

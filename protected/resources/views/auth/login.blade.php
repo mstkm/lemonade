@@ -38,7 +38,7 @@
                         {{ csrf_field() }}
 								<div class="form-group">
 									<label for="signin-username" class="control-label sr-only">Username</label>
-									
+
                                     <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
                                         @if ($errors->has('username'))
                                             <span class="help-block">
@@ -63,7 +63,7 @@
 								</div>
 								<button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
 								<div class="bottom">
-									<span class="helper-text"><i class="fa fa-lock"></i> <a href="#">Forgot password?</a></span> | 
+									{{--  <span class="helper-text"><i class="fa fa-lock"></i> <a href="#">Forgot password?</a></span> |  --}}
 									<span class="helper-text"><i class="fa fa-user"></i> <a href="{{url('register')}}">Register</a></span>
 								</div>
 							</form>

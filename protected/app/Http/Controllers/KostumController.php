@@ -53,32 +53,18 @@ class KostumController extends Controller
         
         //return $request->all();
         $name=$request->get('name');
-        $status=$request->get('status');
-        $start=$request->get('startkostum');
-        $end=$request->get('endkostum');
-        $alamat=$request->get('alamat');
-        $gedung_id=$request->get('gedung_id');
+        $foto='-';
         $keterangan=$request->get('keterangan');
-        $paket_id=$request->get('paket_id');
-        $klien_id='1';
-        $kostum_id=$request->get('kostum_id');
+        
         // $klien_id=$request->get('klien_id');
         //$name=$request->get('user_id');
 
         try {
             $new= new kostum(array(
                 'name'=>$name,
-                'status'=>$status,
-                'startkostum'=>$start,
-                'endkostum'=>$end,
-                'alamat'=>$alamat,
-                'gedung'=>"dyandra",
-                'gedung_id'=>$gedung_id,
+                'foto'=>'-',
                 'keterangan'=>$keterangan,
-                'paket_id'=>$paket_id,
-                'kostum_id'=>$kostum_id,
-                'klien_id'=>$klien_id,
-                'user_id'=>Auth::user()->id,
+                
                 ));
             $new->save();
             return redirect('admin/kostum')->with('status', 'Data Berhasil disimpan!!');

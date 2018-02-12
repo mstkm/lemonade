@@ -12,8 +12,8 @@
 					<div class="row">
 						<div class="col-md-12">
 							<!-- BUTTONS -->
-							<div class="panel">    
-  
+							<div class="panel">
+
     @if (session('status'))
                     <div class="alert alert-danger">
                         {{ session('status') }}
@@ -55,7 +55,7 @@
                                 @endif
                             </div>
                         </div>
-                        
+
 
                         <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                             <label for="phone" class="col-md-4 control-label">Phone</label>
@@ -114,6 +114,8 @@
                                 <button type="submit" class="btn btn-primary">
                                     Register
                                 </button>
+
+                                <a href="{{url('/')}}" class="btn btn-danger">Cancel</a>
                             </div>
                         </div>
                     </form>

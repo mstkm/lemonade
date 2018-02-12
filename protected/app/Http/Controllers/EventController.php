@@ -120,7 +120,7 @@ class EventController extends Controller
             }
             elseif(Auth::user()->jenis=='klien')
             {
-                return redirect('/')->with('status', 'Pesanan anda berhasil terkirim!!');
+                return redirect('admin/event')->with('status', 'Pesanan anda berhasil terkirim!!');
             }
           }
           catch (\Exception $e) {
